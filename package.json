@@ -1,0 +1,25 @@
+{
+  "name": "carbon-client-node",
+  "version": "0.0.1",
+  "description": "carbon client node",
+  "contributors": [
+    "Will Shulman <will@objectlabs.com>",
+    "Abdul Alkhatib <abdul@objectlabs.com>"
+  ],
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/carbon-io/carbon-client-node"
+  },
+  "main": "./lib/CarbonClient.js",
+  "directories" : {
+    "lib" : "./lib",
+    "bin" : "./bin"
+  },
+  "engines": { "node": "~0.8.6" },
+  "dependencies": {
+    "mongodb-extended-json": "1.1.2",
+    "http-errors": "git+ssh://git@github.com:carbon-io/carbon-client.git",
+    "fibrous": "git+ssh://git@github.com:goodeggs/fibrous.git#v0.4.0"
+  },
+  "preferGlobal": false
+}
