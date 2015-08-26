@@ -19,7 +19,8 @@
   "dependencies": {
     "mongodb-extended-json": "1.1.2",
     "http-errors": "git+ssh://git@github.com:carbon-io/carbon-client.git",
-    "fibrous": "git+ssh://git@github.com:goodeggs/fibrous.git#v0.4.0"
+    "fibrous": "git+ssh://git@github.com:goodeggs/fibrous.git#v0.4.0",
+    "fiber": "git+ssh://git@github.com/carbon-io/fiber.git#v0.1.0"
   },
   "preferGlobal": false
 }
