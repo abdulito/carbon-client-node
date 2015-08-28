@@ -3,7 +3,7 @@
  */
 
 var fiber = require('fiber')
-var __  = fiber.__(module, true);
+var __  = fiber.__(module);
 
 var assert = require('assert');
 var testClient = require('./setup')
