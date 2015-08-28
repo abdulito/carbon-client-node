@@ -16,6 +16,17 @@ var testUrl = "http://localhost:9088"
  */
 nock(testUrl).get('/Hello').reply(200, "Hello!")
 
+/**********************************************************************
+ * /users
+ */
+nock(testUrl)
+  .get('/users')
+  .reply(200, [{
+    _id: '123',
+    username: 'abdul',
+    email: 'abdul@carbon-io.com'
+  }]);
+
 
 
 /**********************************************************************
