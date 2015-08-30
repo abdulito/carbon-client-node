@@ -31,6 +31,10 @@ nock(testUrl)
   }]).persist();
 
 
+nock(testUrl).post('/users')
+  .reply(200, {
+    ok: true
+  }).persist();
 
 /**********************************************************************
  * testClient
