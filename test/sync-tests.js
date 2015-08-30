@@ -18,6 +18,7 @@ __(
     assert(res.body === "Hello!")
     console.log("Hello endpoint sync get result: " + res.body)
 
+    console.log("Hello test passed!")
     // test find users
     console.log("testing users collection sync find")
     var data = testClient.getCollection("users").find()
@@ -27,6 +28,7 @@ __(
     assert(data.length > 0)
     assert(data[0].username === "abdul")
 
+    console.log("find test passed!")
     // test insert users
 
     console.log("testing users collection sync insert")
@@ -38,6 +40,22 @@ __(
     assert(result.ok)
     console.log("sync insert result:")
     console.log(result)
+
+    console.log("insert test passed!")
+
+    console.log("testing sync error...")
+    // error
+    try {
+      testClient.getEndpoint("error").get()
+    } catch (e) {
+      console.log("Caught expected error:")
+      console.log(e)
+      assert(e.message === "ERROR")
+      assert(e.code === 500)
+    }
+
+    console.log("Error test passed!")
+
 
 
   }

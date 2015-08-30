@@ -37,6 +37,12 @@ nock(testUrl).post('/users')
   }).persist();
 
 /**********************************************************************
+ * error
+ */
+nock(testUrl).get('/error')
+  .reply(500, "ERROR").persist();
+
+/**********************************************************************
  * testClient
  */
 var testClient = new RestClient(testUrl)

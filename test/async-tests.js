@@ -36,3 +36,19 @@ var result = testClient.getCollection("users").insert({
   console.log(result)
 })
 
+// error test
+
+console.log("testing async error...")
+
+
+testClient.getEndpoint("error").get(function (e, res) {
+  console.log("Caught expected error:")
+  console.log(e)
+  assert(e.message === "ERROR")
+  assert(e.code === 500)
+  console.log("Error test passed!")
+})
+
+
+
+
