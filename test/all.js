@@ -8,6 +8,7 @@ var __  = fiber.__(module, true);
 __(
   function() {
 
+    require('./path-tests');
     require('./async-tests');
     require('./sync-tests');
 
