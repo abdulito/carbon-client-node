@@ -11,6 +11,7 @@ __(
     require('./path-tests');
     require('./async-tests');
     require('./sync-tests');
+    require('./auth-tests');
 
   }
 )
