@@ -14,7 +14,7 @@ testClient.getEndpoint("Hello").get(function(e, res) {
 })
 
 console.log("testing users collection async find")
-testClient.getCollection("users").find(function(e, data) {
+testClient.getCollection("users").find().toArray(function(e, data) {
   assert(data != null)
   assert(e == null)
   console.log("users collection async find result: ")

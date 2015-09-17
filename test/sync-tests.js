@@ -21,7 +21,7 @@ __(
     console.log("Hello test passed!")
     // test find users
     console.log("testing users collection sync find")
-    var data = testClient.getCollection("users").find()
+    var data = testClient.getCollection("users").find().toArray()
     assert(data != null)
     console.log("users collection sync find result: ")
     console.log(data)
