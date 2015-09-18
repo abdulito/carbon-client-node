@@ -19,8 +19,9 @@ testClient.getCollection("users").find().toArray(function(e, data) {
   assert(e == null)
   console.log("users collection async find result: ")
   console.log(data)
-  assert(data.length === 1)
+  assert(data.length > 0)
   assert(data[0].username === "abdul")
+  assert(data[1].username === "bob")
 })
 
 
