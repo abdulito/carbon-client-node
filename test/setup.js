@@ -28,7 +28,12 @@ nock(testUrl)
     _id: '123',
     username: 'abdul',
     email: 'abdul@carbon-io.com'
-  }]).persist();
+    },
+    {
+      _id: '456',
+      username: 'bob',
+      email: 'bob@test.test'
+    }]).persist();
 
 
 nock(testUrl).post('/users')
