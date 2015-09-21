@@ -32,7 +32,7 @@ var client = new RestClient(testUrl, {
 
 console.log("testing header-authenticated users collection find")
 
-client.getCollection("header-authenticated-users").find(function(e, data) {
+client.getCollection("header-authenticated-users").find().toArray(function(e, data) {
   assert(e == null)
   assert(data != null)
   console.log("users collection async find result: ")
@@ -53,7 +53,7 @@ var badClient = new RestClient(testUrl, {
 
 console.log("testing header-authenticated users collection with bad api key")
 
-badClient.getCollection("header-authenticated-users").find(function(e, data) {
+badClient.getCollection("header-authenticated-users").find().toArray(function(e, data) {
   assert(e != null)
   console.log("Caught expected error:")
   console.log(e)
@@ -86,7 +86,7 @@ var client2 = new RestClient(testUrl, {
 
 console.log("testing header-authenticated users collection find")
 
-client2.getCollection("query-authenticated-users").find(function(e, data) {
+client2.getCollection("query-authenticated-users").find().toArray(function(e, data) {
   console.log(e)
   assert(e == null)
   assert(data != null)
@@ -108,7 +108,7 @@ var badClient2 = new RestClient(testUrl, {
 
 console.log("testing query-authenticated users collection with bad api key")
 
-badClient2.getCollection("query-authenticated-users").find(function(e, data) {
+badClient2.getCollection("query-authenticated-users").find().toArray(function(e, data) {
   assert(e != null)
   console.log("Caught expected error:")
   console.log(e)
