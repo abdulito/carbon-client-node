@@ -5,7 +5,9 @@
 var assert = require('assert');
 var testClient = require('./setup')
 
+// test hello async
 console.log("testing Hello async get")
+
 testClient.getEndpoint("Hello").get(function(e, res) {
   assert( e == null)
   assert(res != null)
@@ -40,7 +42,6 @@ usersCollection.find().each(function(e, item) {
 
 
 // test insert users
-
 console.log("testing users collection async insert")
 
 usersCollection.insert({
@@ -56,9 +57,7 @@ usersCollection.insert({
 )
 
 // error test
-
 console.log("testing async error...")
-
 
 testClient.getEndpoint("error").get(function (e, res) {
   assert(e != null)
