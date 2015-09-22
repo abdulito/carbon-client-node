@@ -19,9 +19,13 @@ __(
     console.log("Hello endpoint sync get result: " + res.body)
 
     console.log("Hello test passed!")
+
     // test find users
+    var usersCollection = testClient.getCollection("users")
+
     console.log("testing users collection sync find")
-    var data = testClient.getCollection("users").find().toArray()
+    var data = usersCollection.find().toArray()
+
     assert(data != null)
     console.log("users collection sync find result: ")
     console.log(data)
@@ -33,7 +37,7 @@ __(
 
     console.log("testing users collection sync insert")
 
-    var result = testClient.getCollection("users").insert({
+    var result = usersCollection("users").insert({
       username: "joe"
     })
     assert(result != null)
