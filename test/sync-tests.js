@@ -34,11 +34,13 @@ __(
 
     console.log("find test passed!")
 
+    // test each sync
+    console.log("test cursor.eachSync")
     var count = 0
     usersCollection.find().eachSync(function(e, item) {
       assert(item != null)
       assert(e == null)
-      console.log("Users find.each() item")
+      console.log("Users find().eachSync() item")
       console.log(item)
       assert(item.username === "abdul" || item.username === "bob")
       count++
@@ -47,6 +49,17 @@ __(
     // assert that count == 2 to ensure that this call is async
     assert(count === 2)
 
+    // test next
+    console.log("Testing cursor.next() sync")
+    var cursor = usersCollection.find()
+    var item = cursor.next()
+    assert(item.username === "abdul")
+
+    console.log("Testing cursor.toArray() sync")
+    // test toArray() should continue from  the current position
+    var arr = cursor.toArray()
+    assert(arr.length === 1)
+    assert(arr[0].username === "bob")
     // test insert users
     console.log("testing users collection sync insert")
 
