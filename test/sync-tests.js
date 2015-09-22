@@ -33,11 +33,24 @@ __(
     assert(data[0].username === "abdul")
 
     console.log("find test passed!")
-    // test insert users
 
+    var count = 0
+    usersCollection.find().eachSync(function(e, item) {
+      assert(item != null)
+      assert(e == null)
+      console.log("Users find.each() item")
+      console.log(item)
+      assert(item.username === "abdul" || item.username === "bob")
+      count++
+    })
+
+    // assert that count == 2 to ensure that this call is async
+    assert(count === 2)
+
+    // test insert users
     console.log("testing users collection sync insert")
 
-    var result = usersCollection("users").insert({
+    var result = usersCollection.insert({
       username: "joe"
     })
     assert(result != null)
