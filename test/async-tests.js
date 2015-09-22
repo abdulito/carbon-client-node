@@ -13,7 +13,8 @@ testClient.getEndpoint("Hello").get(function(e, res) {
   console.log("Hello endpoint async get result: " + res.body)
 })
 
-console.log("testing users collection async find")
+// test find.toArray()
+console.log("testing users collection async find toArray")
 testClient.getCollection("users").find().toArray(function(e, data) {
   assert(data != null)
   assert(e == null)
@@ -22,6 +23,16 @@ testClient.getCollection("users").find().toArray(function(e, data) {
   assert(data.length > 0)
   assert(data[0].username === "abdul")
   assert(data[1].username === "bob")
+})
+
+// test find.each()
+console.log("testing users collection async find toArray")
+testClient.getCollection("users").find().each(function(e, item) {
+  assert(item != null)
+  assert(e == null)
+  console.log("Users find.each() item")
+  console.log(item)
+  assert(item.username === "abdul" || item.username === "bob")
 })
 
 
