@@ -14,8 +14,10 @@ testClient.getEndpoint("Hello").get(function(e, res) {
 })
 
 // test find.toArray()
+var usersCollection = testClient.getCollection("users")
 console.log("testing users collection async find toArray")
-testClient.getCollection("users").find().toArray(function(e, data) {
+
+usersCollection.find().toArray(function(e, data) {
   assert(data != null)
   assert(e == null)
   console.log("users collection async find result: ")
@@ -27,7 +29,8 @@ testClient.getCollection("users").find().toArray(function(e, data) {
 
 // test find.each()
 console.log("testing users collection async find toArray")
-testClient.getCollection("users").find().each(function(e, item) {
+
+usersCollection.find().each(function(e, item) {
   assert(item != null)
   assert(e == null)
   console.log("Users find.each() item")
@@ -40,15 +43,17 @@ testClient.getCollection("users").find().each(function(e, item) {
 
 console.log("testing users collection async insert")
 
-var result = testClient.getCollection("users").insert({
-  username: "joe"
-}, function(e, result){
-  assert(e == null)
-  assert(result != null)
-  assert(result.ok)
-  console.log("async insert result:")
-  console.log(result)
-})
+usersCollection.insert({
+    username: "joe"
+  },
+  function(e, result) {
+    assert(e == null)
+    assert(result != null)
+    assert(result.ok)
+    console.log("async insert result:")
+    console.log(result)
+  }
+)
 
 // error test
 
