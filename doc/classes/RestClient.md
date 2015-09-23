@@ -7,9 +7,9 @@ Constructor
 ----------
 #### RestClient(url, options)
 **Parameters**
-* ```url``` _string_: Url for RESTFul server. e.g. http://localhost:8888
+* ```url``` _string_: Url for RESTFul server. e.g. http://localhost:8888.
 
-* ```options``` _object_ _(optional)_: An object for specifying client options. e.g. "authentication"
+* ```options``` _object_ _(optional)_: An object for specifying client options. e.g. "authentication".
 
 **options**
 * ```authentication``` - An object for specifying authentication configuration for the client
