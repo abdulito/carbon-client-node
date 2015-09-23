@@ -25,15 +25,37 @@ Methods
 
 #### get()
 
+Performs an http ```GET```.
+
 **Parameters**
-* ```cb``` - Callback function for asynchronous calls (optional)
-* ```options``` (optional)
+* ```options``` - options for GET. See "options"
+* ```cb``` - Callback function for asynchronous calls.
 
 **Supported calling forms**
 * ```get(cb)``` - asynchronous call
 * ```get(options, cb)``` - asynchronous call with options
 * ```get()``` - synchronous call
 * ```get(options)``` - synchronous call with options
+
+**Returns** (```Response```): A ```Response``` object (only for sync calls).
+
+
+#### post()
+
+Performs an http ```POST```
+
+**Parameters**
+* ```body``` - body for post
+* ```options``` (optional)
+* ```cb``` - Callback function for asynchronous calls.
+
+**Supported calling forms**
+* ```post(cb)``` - asynchronous call
+* ```post(body, cb)``` - asynchronous call with body
+* ```post(body, options, cb)``` - asynchronous call with body and options
+* ```post()``` - synchronous call
+* ```post(body)``` - synchronous call with body
+* ```post(body, options)``` - synchronous call with body and options
 
 **Returns** (```Response```): A ```Response``` object (only for sync calls).
 
