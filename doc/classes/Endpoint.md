@@ -167,6 +167,35 @@ Performs an http ```OPTIONS```
 
 **Returns** (```Response```): A ```Response``` object (only for sync calls).
 
+#### getEndpoint(path)
+
+**Parameters**
+* ```path``` - relative path of endpoint
+
+**Returns** (```Endpoint```): A child endpoint ```Endpoint```.
+
+#### getCollection(path)
+
+**Parameters**
+* ```path``` - relative path of collection
+
+**Returns** (```Collection```): A ```Collection```.
+
+#### getAbsolutePath()
+
+**Parameters**
+_none_
+
+**Returns** (```string```): Absolute path for endpoint
+
+#### getFullUrl()
+
+
+
+**Parameters**
+_none_
+**Returns** (```string```): Returns the full url for accessing the endpoint (client url + absolute path)
+
 Examples
 ----------
 **Async examples**
