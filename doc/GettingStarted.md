@@ -34,7 +34,7 @@ Then install the package dependencies like this:
 
 ### Creating the client
 
-```
+```node
 // require the client
 var RestClient = require('carbon-client-node');
 
