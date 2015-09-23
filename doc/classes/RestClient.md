@@ -27,21 +27,14 @@ Methods
 #### getEndpoint(path)
 
 **Parameters**
-path: relative path of endpoint
+* ```path``` - relative path of endpoint
 
 **Returns** (```Endpoint```): An ```Endpoint```.
 
 #### getCollection(path)
 
 **Parameters**
-path: relative path of collection
-
-**Returns** (```Collection```): A ```Collection```.
-
-#### getCollection(path)
-
-**Parameters**
-path: relative path of collection
+* ```path``` - relative path of collection
 
 **Returns** (```Collection```): A ```Collection```.
 
