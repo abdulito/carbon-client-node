@@ -38,7 +38,7 @@ __(
     console.log("test cursor.eachSync")
     var count = 0
     // TODO switch to eachSync method after fixing it
-    usersCollection.find().eachSync(function(e, item) {
+    usersCollection.find().each(function(e, item) {
       assert(item != null)
       assert(e == null)
       console.log("Users find().eachSync() item")
