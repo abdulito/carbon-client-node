@@ -8,7 +8,7 @@ Contents
 ---------
 * [Quick start](doc/GettingStarted.md)
 * Class reference
-  * [RestClient](doc/classes/Endpoint.md)
+  * [RestClient](doc/classes/RestClient.md)
   * [Endpoint](doc/classes/Endpoint.md)
   * [Collection](doc/classes/Collection.md)
   * [CollectionCursor](doc/classes/CollectionCursor.md)
