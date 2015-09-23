@@ -65,3 +65,17 @@ client.getCollection("users").get(function(e, data) {
 ```
 
 
+```node
+// authentication example
+
+var client = new RestClient("http://localhost:8888", {
+  authentication: {
+    type: "api-key",
+    apiKey:"123",
+    apiKeyParameterName: "API_KEY",
+    apiKeyLocation: "header"
+  }
+})
+
+```
+
