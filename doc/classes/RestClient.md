@@ -13,13 +13,16 @@ Constructor
 
 **options**
 * ```authentication``` - An object for specifying authentication configuration for the client
-```
+
+```node
+//API Key Authentication
+
 authentication: {
-    type: "api-key",
-    apiKey:"123",
-    apiKeyParameterName: "API_KEY",
-    apiKeyLocation: "header"
-  }
+  type: "api-key",
+  apiKey: <string>,
+  apiKeyParameterName: <string>,
+  apiKeyLocation: "header" OR "query"
+}
 ```
 Methods
 ----------
@@ -44,20 +47,20 @@ Examples
 
 ```node
 // require the client
-var RestClient = require('carbon-client-node');
+var RestClient = require('carbon-client-node')
 
 // create the client object
 var client = new RestClient("http://localhost:8888")
 
 // request the /hello endpoint
 client.getEndpoint("hello").get(function(e, res) {
-   console.log("Response from /hello: " + res.body)
+  console.log("Response from /hello: " + res.body)
 })
 
 // request the /users collection
 client.getCollection("users").get(function(e, data) {
-   console.log("Users:")
-   console.log(data)
+  console.log("Users:")
+  console.log(data)
 })
 ```
 
