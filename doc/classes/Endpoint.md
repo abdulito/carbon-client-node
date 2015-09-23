@@ -45,8 +45,8 @@ Performs an http ```GET```.
 Performs an http ```POST```
 
 **Parameters**
-* ```body``` - body for post
-* ```options``` (optional)
+* ```body``` - body of request
+* ```options```
 * ```cb``` - Callback function for asynchronous calls.
 
 **Supported calling forms**
@@ -56,6 +56,114 @@ Performs an http ```POST```
 * ```post()``` - synchronous call
 * ```post(body)``` - synchronous call with body
 * ```post(body, options)``` - synchronous call with body and options
+
+**Returns** (```Response```): A ```Response``` object (only for sync calls).
+
+
+#### put()
+
+Performs an http ```PUT```
+
+**Parameters**
+* ```body``` - body of request
+* ```options```
+* ```cb``` - Callback function for asynchronous calls.
+
+**Supported calling forms**
+* ```put(cb)``` - asynchronous call
+* ```put(body, cb)``` - asynchronous call with body
+* ```put(body, options, cb)``` - asynchronous call with body and options
+* ```put()``` - synchronous call
+* ```put(body)``` - synchronous call with body
+* ```put(body, options)``` - synchronous call with body and options
+
+**Returns** (```Response```): A ```Response``` object (only for sync calls).
+
+#### patch()
+
+Performs an http ```PATCH```
+
+**Parameters**
+* ```body``` - body of request
+* ```options```
+* ```cb``` - Callback function for asynchronous calls.
+
+**Supported calling forms**
+* ```patch(cb)``` - asynchronous call
+* ```patch(body, cb)``` - asynchronous call with body
+* ```patch(body, options, cb)``` - asynchronous call with body and options
+* ```patch()``` - synchronous call
+* ```patch(body)``` - synchronous call with body
+* ```patch(body, options)``` - synchronous call with body and options
+
+**Returns** (```Response```): A ```Response``` object (only for sync calls).
+
+
+#### delete()
+
+Performs an http ```DELETE```
+
+**Parameters**
+* ```options```
+* ```cb``` - Callback function for asynchronous calls.
+
+**Supported calling forms**
+* ```delete(cb)``` - asynchronous call
+* ```delete(options, cb)``` - asynchronous call with options
+* ```delete()``` - synchronous call
+* ```delete(options)``` - synchronous call with options
+
+**Returns** (```Response```): A ```Response``` object (only for sync calls).
+
+#### head()
+
+Performs an http ```HEAD```
+
+**Parameters**
+* ```options```
+* ```cb``` - Callback function for asynchronous calls.
+
+**Supported calling forms**
+* ```head(cb)``` - asynchronous call
+* ```head(options, cb)``` - asynchronous call with options
+* ```head()``` - synchronous call
+* ```head(options)``` - synchronous call with options
+
+**Returns** (```Response```): A ```Response``` object (only for sync calls).
+
+#### head()
+
+Performs an http ```HEAD```
+
+**Parameters**
+* ```options```
+* ```cb``` - Callback function for asynchronous calls.
+
+**Supported calling forms**
+* ```head(cb)``` - asynchronous call
+* ```head(options, cb)``` - asynchronous call with options
+* ```head()``` - synchronous call
+* ```head(options)``` - synchronous call with options
+
+**Returns** (```Response```): A ```Response``` object (only for sync calls).
+
+
+#### options()
+
+Performs an http ```OPTIONS```
+
+**Parameters**
+* ```body``` - body of request
+* ```options```
+* ```cb``` - Callback function for asynchronous calls.
+
+**Supported calling forms**
+* ```options(cb)``` - asynchronous call
+* ```options(body, cb)``` - asynchronous call with body
+* ```options(body, options, cb)``` - asynchronous call with body and options
+* ```options()``` - synchronous call
+* ```options(body)``` - synchronous call with body
+* ```options(body, options)``` - synchronous call with body and options
 
 **Returns** (```Response```): A ```Response``` object (only for sync calls).
 
@@ -71,9 +179,17 @@ var RestClient = require('carbon-client-node')
 var client = new RestClient("http://localhost:8888")
 
 // async get /hello
-var endpoint = client.getEndpoint("hello")
-endpoint.get(function(e, res) {
-  console.log("Response from /hello: " + res.body)
+var helloEndpoint = client.getEndpoint("hello")
+helloEndpoint.get(function(e, res) {
+  console.log("Response from /hello:")
+  console.log(res.body)
+})
+
+// async post /user
+var usersEndpoint = client.getEndpoint("users")
+usersEndpoint.post({"name": "bob"}, function(e, res) {
+  console.log("Response from /users:")
+  console.log(res.body)
 })
 
 
@@ -94,12 +210,23 @@ var client = new RestClient("http://localhost:8888")
 
 __(
   function() {
-    // async get /hello
+
+    // sync get /hello
     var endpoint = client.getEndpoint("hello")
     var res = endpoint.get()
-    console.log("Response from /hello: " + res.body)
+    console.log("Response from /hello:")
+    console.log(res.body)
+
+
+    // sync post /user
+    var usersEndpoint = client.getEndpoint("users")
+    var res = usersEndpoint.post({"name": "bob"})
+    console.log("Response from /users:")
+    console.log(res.body)
+
   }
 )
+
 
 ```
 
