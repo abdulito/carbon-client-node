@@ -9,7 +9,7 @@ Constructor
 **Parameters**
 * ```url``` _string_: url for RESTFul server. e.g. http://localhost:8888
 
-* ```options``` _object_ _(optional)_ - An object for specifying client options. e.g. "authentication"
+* ```options``` _object_ _(optional)_: An object for specifying client options. e.g. "authentication"
 
 **options**
 * ```authentication``` - An object for specifying authentication configuration for the client
