@@ -214,7 +214,7 @@ helloEndpoint.get(function(e, res) {
   console.log(res.body)
 })
 
-// async post /user
+// async post /users
 var usersEndpoint = client.getEndpoint("users")
 usersEndpoint.post({"name": "bob"}, function(e, res) {
   console.log("Response from /users:")
