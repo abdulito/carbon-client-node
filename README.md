@@ -180,8 +180,8 @@ cursor.next(function(e, item) {
 ```
 
 ### Synchronized calls (calling with no callbacks)
-It is super easy to use a sync version of CarbonClient. All you have do is just call same methods but just without passing a callback function.
-sync calls must be made within fibers.
+It is super easy to make sync calls with CarbonClient. All you have do is just call same methods but just without passing a callback function.
+sync calls must be made within a fiber.
 
 ```node
 var fiber = require('fiber')
