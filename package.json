@@ -1,6 +1,6 @@
 {
   "name": "carbon-client-node",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "carbon client node",
   "contributors": [
     "Will Shulman <will@objectlabs.com>",
