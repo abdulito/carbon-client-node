@@ -87,7 +87,7 @@ var endpoint = client.getEndpoint("hello");
 var options = {
   params: {
     x: 1,
-    y=2
+    y: 2
 
   }
 }
