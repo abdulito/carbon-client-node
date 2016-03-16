@@ -49,10 +49,28 @@ Then install the package dependencies like this:
 ```
 
 
-Usages
+Quick Start
 ---------
 
 
+
+```node
+// require the client
+var RestClient = require('carbon-client-node');
+
+// create the client object
+var client = new RestClient("http://localhost:8888")
+
+// GET http://localhost:8888/hello
+client.getEndpoint("hello").get(function(e, response) {
+  console.log("Response from /hello: " + response.body)
+})
+
+```
+
+
+Use
+---------
 
 ### Basic HTTP calls
 
@@ -93,7 +111,7 @@ var options = {
 }
 
 // GET http://localhost:8888/hello?x=1&y=2
-endpoint.get(options function(e, response) {
+endpoint.get(options, function(e, response) {
   console.log("Response from /hello: " + response.body)
 })
 
@@ -218,9 +236,66 @@ __(
 
 ### Authentication
 
-### More options
+Currently, CarbonClient only supports api-key authentication model.
+
+##### api-key authentication
+
+CarbonClient allows Api key authentication by passing the api key value in the header or query string. This will make the client send the api key parameter in every request.
+See following example:
+
+```node
+
+var client = new RestClient("http://localhost:8888", {
+  authentication: {
+    type: "api-key",
+    apiKey:"123",
+    apiKeyParameterName: "API_KEY", // the parameter name of the api key
+    apiKeyLocation: "header" // use "query" for passing API_KEY using query string
+  }
+})
+
+
+```
+
 
 ### Error handling
+Errors raised by CarbonClient are instances of the HttpError class defined in [HttpErrors](https://github.com/carbon-io/http-errors) module of carbon.
+An HttpError contains the http error code, message, and description.
+
+For asynchronous calls, The error object will be the first argument of the callback function.
+
+```node
+
+// GET http://localhost:8888/hello
+client.getEndpoint("doesnotexit").get(function(e, response) {
+  if(e) {
+      console.log("Caught an error")
+      console.log("code: " + e.code);
+      console.log("message: " + e.message);
+      console.log("description: " + e.description);
+  }
+})
+```
+
+For synchronous calls, the errors are raised back so it will have to be caught within a try-catch.
+
+```node
+
+// GET http://localhost:8888/hello
+
+try {
+    client.getEndpoint("doesnotexit").get()
+} catch(e) {
+    console.log("Caught an error")
+    console.log("code: " + e.code);
+    console.log("message: " + e.message);
+    console.log("description: " + e.description);
+}
+
+```
+
+
+### More options
 
 Class reference
 ---------
