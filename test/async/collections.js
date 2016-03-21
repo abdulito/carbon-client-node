@@ -79,11 +79,15 @@ cursor.next(function(e, obj) {
 console.log("testing users collection async find toArray")
 
 usersCollection.find().each(function(e, item) {
-  assert(item != null)
   assert(e == null)
-  console.log("Users find.each() item")
-  console.log(item)
-  assert(item.username === "abdul" || item.username === "bob")
+  if(item != null) {
+    console.log("Users find.each() item")
+    console.log(item)
+    assert(item.username === "abdul" || item.username === "bob")
+  } else {
+    console.log("find.each() done!")
+  }
+
 })
 
 

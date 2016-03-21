@@ -295,7 +295,8 @@ try {
 ```
 
 
-### More options
+### Advanced features
+
 
 Class reference
 ---------
