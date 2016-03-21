@@ -48,11 +48,11 @@ function get_request_test_users(uri, requestBody) {
   var end = TEST_USERS.length
 
   if (query.skip) {
-    start = query.skip
+    start = parseInt(query.skip)
   }
 
   if (query.limit) {
-    end = start + query.limit
+    end = start + parseInt(query.limit)
   }
 
   return TEST_USERS.slice(start, end)
