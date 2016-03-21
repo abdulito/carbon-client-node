@@ -12,7 +12,7 @@ var nock = require('nock');
  */
 
 // create the nock header authed endpoint
-nock(testUrl).get('/header-authenticated-users').matchHeader('API_KEY', '123').query(true)
+nock(testUrl).get('/header-authenticated-users').matchHeader('API_KEY', '123')
   .reply(200, [{
     _id: '123',
     username: 'abdul',
@@ -66,7 +66,7 @@ badClient.getCollection("header-authenticated-users").find().toArray(function(e,
  * query based authentication tests
  */
 // create the nock header authed endpoint
-nock(testUrl).get('/query-authenticated-users?API_KEY=123&limit=100')
+nock(testUrl).get('/query-authenticated-users?API_KEY=123')
   .reply(200, [{
     _id: '123',
     username: 'abdul',
