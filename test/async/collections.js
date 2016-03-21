@@ -5,18 +5,9 @@
 var assert = require('assert');
 var testClient = require('../setup')
 
-// test hello async
-console.log("testing Hello async get")
+console.log("Collections test ASYNC")
 
 var usersCollection = testClient.getCollection("users")
-
-
-testClient.getEndpoint("Hello").get(function(e, res) {
-  assert( e == null)
-  assert(res != null)
-  assert(res.body === "Hello!")
-  console.log("Hello endpoint async get result: " + res.body)
-})
 
 // test find.toArray()
 
