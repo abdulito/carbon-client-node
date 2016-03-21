@@ -12,6 +12,7 @@ __(
     require('./async-tests');
     require('./sync-tests');
     require('./auth-tests');
+    require('./async/collections');
 
   }
 )
