@@ -13,6 +13,8 @@ __(
     require('./sync/basic')
     require('./async/collections')
     require('./sync/collections')
+    require('./async/error')
+    require('./sync/error')
     require('./auth-tests')
 
   }
