@@ -168,14 +168,20 @@ usersCollection.find({"name": "joe"}).toArray(function(e, data) {
 
 ### Cursor iteration
 The ```Cursor.toArray()``` loads all results into a single array object which could be memory consuming.
-To avoid that, use the ```Cursor.each()``` method which takes a function to iterate over each item of results
+To avoid that, use the ```Cursor.each()``` method which takes a function to iterate over each item of results.
+It will return ```null``` when the cursor finishes.
 
 ```node
 // find all users
 var usersCollection = client.getCollection("users")
 var cursor = usersCollection.find()
 cursor.each(function(e, item) {
-  console.log(item)
+  if (item == null) {
+    console.log("Finish!")
+  } else {
+     console.log(item)
+  }
+
 
 })
 
