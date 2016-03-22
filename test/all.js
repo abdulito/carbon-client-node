@@ -3,16 +3,17 @@
  */
 
 var fiber = require('fiber')
-var __  = fiber.__(module, true);
+var __  = fiber.__(module, true)
 
 __(
   function() {
 
-    require('./path-tests');
-    require('./async-tests');
-    require('./sync-tests');
-    require('./auth-tests');
-    require('./async/collections');
+    require('./path-tests')
+    require('./async/basic')
+    require('./sync/basic')
+    require('./async/collections')
+    require('./sync/collections')
+    require('./auth-tests')
 
   }
 )

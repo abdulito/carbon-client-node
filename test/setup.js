@@ -16,9 +16,16 @@ var testUrl = "http://localhost:9088"
 console.log("Setting up nock endpoints...")
 
 /**********************************************************************
- * /Hello
+ * HTTP METHODS
  */
-nock(testUrl).get('/Hello').reply(200, "Hello!").persist()
+nock(testUrl).get('/get-test').reply(200, "GET").persist()
+nock(testUrl).post('/post-test').reply(200, "POST").persist()
+nock(testUrl).put('/put-test').reply(200, "PUT").persist()
+nock(testUrl).patch('/patch-test').reply(200, "PATCH").persist()
+nock(testUrl).delete('/delete-test').reply(200, "DELETE").persist()
+nock(testUrl).head('/head-test').reply(200, "HEAD").persist()
+// OPTIONS http method not supported by nock
+//nock(testUrl).options('/options-test').reply(200, "OPTIONS").persist()
 
 /**********************************************************************
  * /users
