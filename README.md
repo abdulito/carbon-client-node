@@ -151,6 +151,16 @@ CarbonClient provides convenient interfaces to access collections. It provides c
  you can perform ```find()```, ```insert()```, ```update()```, and ```remove()```.
  The ```find()``` method returns a ```Cursor``` object which is used to iterate over results.
 
+
+```find()``` supports the following calling forms
+
+```node
+ *   find(cb)
+ *   find(query, cb)
+ *   find(query, options, cb)
+```
+
+
 ```node
 // find all users
 var usersCollection = client.getCollection("users")
@@ -164,7 +174,12 @@ usersCollection.find({"name": "joe"}).toArray(function(e, data) {
   console.log("All users matching name 'joe'")
   console.log(data)
 })
+
+})
 ```
+
+The ```find()``` method returns a ```Cursor``` object which is used to iterate over results.
+
 
 ### Cursor iteration
 The ```Cursor.toArray()``` loads all results into a single array object which could be memory consuming.
@@ -202,6 +217,46 @@ cursor.next(function(e, item) {
 })
 
 ```
+
+### Cursor pagination
+
+Pagination for results returned by ```find()``` can be achieved  with ```skip``` and ```limit``` options through the ```options``` argument:
+
+```node
+
+var usersCollection = client.getCollection("users")
+var cursor = usersCollection.find({}, {skip:100, limit:100}).toArray(function(e, data) {
+  for( var i=0; i < data.length; i++) {
+     console.log(data[i])
+  }
+
+})
+
+```
+
+
+### Sorting find() results
+
+```options``` argument also allows ```sort``` which takes a key to sort on:
+
+```node
+
+var usersCollection = client.getCollection("users")
+
+// find all users sort by name descending
+var cursor = usersCollection.find({}, {sort:{"name": -1}}).toArray(function(e, data) {
+  for( var i=0; i < data.length; i++) {
+     console.log(data[i])
+  }
+
+})
+
+```
+
+
+### Limiting fields within find() results
+
+
 
 ### Synchronized calls (calling with no callbacks)
 It is super easy to make sync calls with CarbonClient. All you have do is just call same methods but just without passing a callback function.
