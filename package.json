@@ -19,7 +19,7 @@
   "dependencies": {
     "mongodb-extended-json": "1.1.2",
     "carbon-client": "git+ssh://git@github.com:carbon-io/carbon-client-js.git",
-    "fibrous": "git+ssh://git@github.com:goodeggs/fibrous.git#v0.4.0",
+    "fibrous": "git+ssh://git@github.com:carbon-io/fibrous#v0.4.1-ml",
     "fiber": "git+ssh://git@github.com/carbon-io/fiber.git",
     "nock": "2.10.0"
   },
