@@ -6,7 +6,7 @@ var assert = require('assert');
 var testClient = require('../setup')
 
 var fiber = require('fiber')
-var __  = fiber.__(module, true);
+var __  = fiber.__
 
 __(
   function() {
