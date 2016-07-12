@@ -18,7 +18,7 @@
   "engines": { "node": "~0.8.6" },
   "dependencies": {
     "mongodb-extended-json": "1.1.2",
-    "carbon-client": "git+ssh://git@github.com:carbon-io/carbon-client-js.git#v0.0.3",
+    "carbon-client": "git+ssh://git@github.com:carbon-io/carbon-client-js.git#master",
     "fibrous": "git+ssh://git@github.com:carbon-io/fibrous#v0.4.1-ml",
     "fiber": "git+ssh://git@github.com/carbon-io/fiber.git#v0.1.2",
     "nock": "2.10.0"
