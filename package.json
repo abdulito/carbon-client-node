@@ -1,6 +1,6 @@
 {
   "name": "carbon-client-node",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "carbon client node",
   "contributors": [
     "Will Shulman <will@objectlabs.com>",
@@ -19,8 +19,7 @@
   "dependencies": {
     "mongodb-extended-json": "1.1.2",
     "carbon-client": "git+ssh://git@github.com:carbon-io/carbon-client-js.git#v0.0.7",
-    "fibrous": "git+ssh://git@github.com:carbon-io/fibrous#v0.4.1-ml",
-    "fiber": "git+ssh://git@github.com/carbon-io/fiber.git#v0.1.2",
+    "@carbon-io/fibers": "git+ssh://git@github.com/carbon-io/fibers.git#v0.3.0",
     "nock": "2.10.0"
   },
   "preferGlobal": false

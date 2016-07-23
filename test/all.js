@@ -2,8 +2,7 @@
  * Created by abdul on 8/26/15.
  */
 
-var fiber = require('fiber')
-var __  = fiber.__
+var __ = require('@carbon-io/fibers').__(module)
 
 __(
   function() {

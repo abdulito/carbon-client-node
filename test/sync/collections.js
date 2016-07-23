@@ -4,9 +4,7 @@
 
 var assert = require('assert');
 var testClient = require('../setup')
-
-var fiber = require('fiber')
-var __  = fiber.__
+var __ = require('@carbon-io/fibers').__(module)
 
 __(
   function() {
