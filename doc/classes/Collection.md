@@ -35,7 +35,7 @@ Methods
 * ```find(query)```
 * ```find(query, options)``` - asynchronous call with query and options
 
-**Returns** (```CollectionCursor```): A [CollectionCursor](CollectionCursor.md) object.
+**Returns** (```Cursor```): A [Cursor](Cursor.md) object.
 
 
 #### insert()
