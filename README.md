@@ -200,6 +200,8 @@ cursor.each(function(e, item) {
 
 })
 
+```
+
 Cursors also provide a ```next()``` method to iterate over a single item. It will return ```null``` when the cursor finishes.
 
 ```node
