@@ -258,13 +258,13 @@ var cursor = usersCollection.find({}, {sort:{"name": -1}}).toArray(function(e, d
 
 ### Limiting fields within find() results
 
-You can limit the set of fields returned by find using ```options.fields``` argument. The ```fields``` argument can
-be specified in the following form:
+You can limit the set of fields returned by find using ```options.projection``` argument. The ```projection``` argument
+can be specified in the following form:
 
 ```
 
 {
-  <field-path>: 1
+  <field-path>: 0 | 1
 }
 
 ```
@@ -277,7 +277,7 @@ var usersCollection = client.getCollection("users")
 
 // find all users and get _id and name, address.city only
 usersCollection.find({}, {
-    fields: {
+    projection: {
       _id
       "name": 1,
       "address.city": 1
@@ -293,7 +293,7 @@ usersCollection.find({}, {
 
 // find all users and get _id and name, address.city only
 usersCollection.find({}, {
-    fields: {
+    projection: {
       "address": 0
     }
    }).toArray(function(e, data) {
