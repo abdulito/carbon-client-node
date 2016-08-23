@@ -258,6 +258,52 @@ var cursor = usersCollection.find({}, {sort:{"name": -1}}).toArray(function(e, d
 
 ### Limiting fields within find() results
 
+You can limit the set of fields returned by find using ```options.fields``` argument. The ```fields``` argument can
+be specified in the following form:
+
+```
+
+{
+  <field-path>: 1
+}
+
+```
+set field value to be 1 to include, 0 to exclude.
+
+
+```node
+
+var usersCollection = client.getCollection("users")
+
+// find all users and get _id and name, address.city only
+usersCollection.find({}, {
+    fields: {
+      _id
+      "name": 1,
+      "address.city": 1
+    }
+   }).toArray(function(e, data) {
+  for(var i=0; i < data.length; i++) {
+     console.log(data[i])
+  }
+
+})
+
+// exclude "address" only
+
+// find all users and get _id and name, address.city only
+usersCollection.find({}, {
+    fields: {
+      "address": 0
+    }
+   }).toArray(function(e, data) {
+  for(var i=0; i < data.length; i++) {
+     console.log(data[i])
+  }
+
+})
+
+```
 
 
 ### Synchronized calls (calling with no callbacks)
