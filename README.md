@@ -6,7 +6,7 @@ Overview
 ---------
 
 CarbonClient is the client-component for Carbon.io. It is a light-weight RESTFul client For NodeJS that can connect to any REST API.
-CarbonClient uses the standard node ```request``` module to make http calls.
+It uses the standard node ```request``` module to make http calls.
 
 
 Main features:
@@ -404,9 +404,56 @@ try {
 ```
 
 
-### Advanced features
+### More Options
+You can get more control with the ```options``` argument:
 
+ ```
+ options.json,
+ headers: options.headers,
+ strictSSL: options.strictSSL,
+ cert: options.cert,
+ key: options.key,
+     ca: options.ca,
+     forever: options.forever,
+```
+##### json/plain-text results
 
+All results are in JSON by default. For plain text, set ```options.json``` to false:
+
+```node
+ // Plain text
+ client.getEndpoint("hello").get({json: false}, function(e, response) {
+   console.log("Response from /hello: " + response.body)
+ })
+```
+
+##### passing headers
+
+Headers can be passed as JSON with the ```options.headers``` to false:
+
+```node
+ // Plain text
+ client.getEndpoint("hello").get({headers: {"Cache-Control": "no-cache"}},
+     function(e, response) {
+       console.log("Response from /hello: " + response.body)
+   }
+ )
+```
+
+##### SSL
+
+```node
+strictSSL: If true, requires SSL certificates be valid
+cert: cert file content
+key: key file content
+ca: ca file content
+```
+
+##### And more
+
+```node
+- forever: set to true to pass keepAlive true
+```
 Class reference
 ---------
 
