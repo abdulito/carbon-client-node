@@ -12,10 +12,11 @@ It uses the standard node ```request``` module to make http calls.
 Main features:
 
 
-* Support for all HTTP methods: ```GET```, ```PUT```, ```POST```, ```CREATE```, ```DELETE```, ```HEAD```, ```OPTIONS```.
-* Support for all Carbon.io collections endpoint methods: ```find()```, ```insert()```, ```update()```, ```remove()```.
-* Support for both asynchronous/synchronous programming styles.
-* Support API Key based authentication
+* Support for all HTTP methods: ```GET```, ```PUT```, ```POST```, ```CREATE```, ```DELETE```, ```HEAD```, ```OPTIONS```, ```PATCH```.
+* Support for all Carbon.io collections endpoint methods: ```find()```, ```insert()```, ```update()```, ```findObject()```, ```updateObject()```,
+```saveObject()```, ```remove()```, ```removeObject()```.
+* Asynchronous/synchronous programming styles.
+* Authentication
 
 
 
@@ -148,7 +149,7 @@ client.getEndpoint("users").put({
 
 ### Collections and Cursors
 CarbonClient provides convenient interfaces to access collections. It provides classes similar to MongoDB Driver Collection/Cursor classes.
- you can perform ```find()```, ```insert()```, ```update()```, and ```remove()```.
+ you can perform ```find()```, ```insert()```, ```update()```, ```findObject()```, ```updateObject()```, ```saveObject()```, ```remove()```, ```removeObject()```.
  The ```find()``` method returns a ```Cursor``` object which is used to iterate over results.
 
 
