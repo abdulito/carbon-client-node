@@ -82,22 +82,6 @@ __(
     console.log(result)
 
 
-    // error test
-    console.log("testing async error...")
-
-    try {
-      testClient.getEndpoint("error").get()
-      // should never get to this
-      assert(false)
-    } catch(e) {
-      assert(e != null)
-      console.log("Caught expected error:")
-      console.log(e)
-      assert(e.message === "ERROR")
-      assert(e.code === 500)
-      console.log("Error test passed!")
-    }
-
 })
 
 
