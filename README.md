@@ -89,8 +89,11 @@ var RestClient = require('carbon-client-node');
 // create the client object
 var client = new RestClient("http://localhost:8888")
 
-// GET http://localhost:8888/hello
-client.getEndpoint("hello").get(function(e, response) {
+// create an endpoint object for /hello
+endpoint = client.getEndpoint("hello")
+
+// call get() which will call GET on http://localhost:8888/hello
+endpoint.get(function(e, response) {
   console.log("Response from /hello: " + response.body)
 })
 
@@ -376,11 +379,11 @@ For asynchronous calls, The error object will be the first argument of the callb
 
 ```node
 
-// GET http://localhost:8888/hello
+// GET http://localhost:8888/doesnotexit
 client.getEndpoint("doesnotexit").get(function(e, response) {
   if(e) {
       console.log("Caught an error")
-      console.log("code: " + e.code);
+      console.log("code: " + e.code); // 404
       console.log("message: " + e.message);
       console.log("description: " + e.description);
   }
@@ -391,19 +394,41 @@ For synchronous calls, the errors are raised back so it will have to be caught w
 
 ```node
 
-// GET http://localhost:8888/hello
+// GET http://localhost:8888/doesnotexit
 
 try {
     client.getEndpoint("doesnotexit").get()
 } catch(e) {
     console.log("Caught an error")
-    console.log("code: " + e.code);
+    console.log("code: " + e.code); // 404
     console.log("message: " + e.message);
     console.log("description: " + e.description);
 }
 
 ```
 
+### Endpoint tree
+
+As a convenience, ```Endpoint``` allow accessing sub-endpoints using the ```Endpoint.getEndpoint()``` method. You can also
+ access the parent Endpoint by ```Endpoint.parent```
+```node
+
+e1 = client.getEndpoint("foo/bar")
+//is equivalent to
+e2 = client.getEndpoint("foo").getEndpoint("bar")
+
+```
+
+Endpoint full uri and absoulte path can be accessed as follows
+
+```node
+console.log(e1.getAbsolutePath()) // '/foo/bar'
+console.log(e2.getAbsolutePath()) // '/foo/bar' as well
+
+
+console.log(e1.getFullUrl()) // this will return client.uri + endpoint's absolute path which will be http://localhost:8888/foo/bar in this case
+
+```
 
 ### More Options
 You can get more control with the ```options``` argument:
