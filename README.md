@@ -57,10 +57,10 @@ Quick Start
 
 ```node
 // require the client
-var RestClient = require('carbon-client-node');
+var CarbonClient = require('carbon-client-node');
 
 // create the client object
-var client = new RestClient("http://localhost:8888")
+var client = new CarbonClient("http://localhost:8888")
 
 // GET http://localhost:8888/hello
 client.getEndpoint("hello").get(function(e, response) {
@@ -84,10 +84,10 @@ All http methods are supported through  ```Endpoint``` object. Each http method 
 
 ```node
 // require the client
-var RestClient = require('carbon-client-node');
+var CarbonClient = require('carbon-client-node');
 
 // create the client object
-var client = new RestClient("http://localhost:8888")
+var client = new CarbonClient("http://localhost:8888")
 
 // create an endpoint object for /hello
 endpoint = client.getEndpoint("hello")
@@ -318,12 +318,12 @@ sync calls must be made within a fiber.
 var fiber = require('fiber')
 var __  = fiber.__(module, true)
 
-var RestClient = require('carbon-client-node')
+var CarbonClient = require('carbon-client-node')
 
 
 
 // create the client object
-var client = new RestClient("http://localhost:8888")
+var client = new CarbonClient("http://localhost:8888")
 
 __(
   function() {
@@ -343,29 +343,6 @@ __(
 
   }
 )
-
-
-```
-
-### Authentication
-
-Currently, CarbonClient only supports api-key authentication model.
-
-##### api-key authentication
-
-CarbonClient allows Api key authentication by passing the api key value in the header or query string. This will make the client send the api key parameter in every request.
-See following example:
-
-```node
-
-var client = new RestClient("http://localhost:8888", {
-  authentication: {
-    type: "api-key",
-    apiKey:"123",
-    apiKeyParameterName: "API_KEY", // the parameter name of the api key
-    apiKeyLocation: "header" // use "query" for passing API_KEY using query string
-  }
-})
 
 
 ```
@@ -430,17 +407,80 @@ console.log(e1.getFullUrl()) // this will return client.uri + endpoint's absolut
 
 ```
 
-### More Options
-You can get more control with the ```options``` argument:
+### passing headers
 
+Headers can be passed as JSON with the ```options.headers``` option. This can be client-level or operation-level.
+This is an example of an operation-level header passing.
+
+```node
+ // Plain text
+ client.getEndpoint("hello").get({headers: {"Cache-Control": "no-cache"}},
+     function(e, response) {
+       console.log("Response from /hello: " + response.body)
+   }
+ )
+```
+
+
+### Options
+
+Options can be be set at client-level or operation-level.
+
+
+To set options at the client level, it is passed with the "options" constructor argument ```CarbonClient(url, options)```.
+For passing them on the operation-level, it is passed with the "options" argument for each endpoint http method.
+
+```node
+//e.g
+endpoint.get(options, cb)
+```
+
+
+Supported options are as follows:
+
+##### Authentication
+
+Currently, CarbonClient only supports api-key authentication model.
+CarbonClient allows Api key authentication by passing the api key value in the header or query string. This will make the client send the api key parameter in every request.
+See following example:
+
+```node
+
+var client = new CarbonClient("http://localhost:8888", {
+  authentication: {
+    type: "api-key",
+    apiKey:"123",
+    apiKeyParameterName: "API_KEY", // the parameter name of the api key
+    apiKeyLocation: "header" // use "query" for passing API_KEY using query string
+  }
+})
+
+
+```
+
+##### SSL Options
+
+SSL options are as follows:
  ```
- options.json,
- headers: options.headers,
- strictSSL: options.strictSSL,
- cert: options.cert,
- key: options.key,
-     ca: options.ca,
-     forever: options.forever,
+ strictSSL: If true, requires SSL certificates be valid
+ cert: cert file content
+ key: key file content
+ ca: ca file content
+```
+
+Here is an example of that
+
+```node
+
+var defaultOptions = {
+  cert: fs.readFileSync("/etc/myservice.cert.pem"),
+  key: fs.readFileSync("/etc/myservice.key.pem"),
+  ca: caFile ? fs.readFileSync("/etc/myservice.ca.cert.pem"),
+  strictSSL: true
+}
+
+client = new CarbonClient(uri, defaultOptions);
+
 ```
 ##### json/plain-text results
 
@@ -453,37 +493,20 @@ All results are in JSON by default. For plain text, set ```options.json``` to fa
  })
 ```
 
-##### passing headers
 
-Headers can be passed as JSON with the ```options.headers``` to false:
 
-```node
- // Plain text
- client.getEndpoint("hello").get({headers: {"Cache-Control": "no-cache"}},
-     function(e, response) {
-       console.log("Response from /hello: " + response.body)
-   }
- )
-```
+##### keepAlive
 
-##### SSL
+keepAlive can be set through the ```forever``` option
 
 ```node
-strictSSL: If true, requires SSL certificates be valid
-cert: cert file content
-key: key file content
-ca: ca file content
+client = new CarbonClient(uri, {forever: true});
 ```
 
-##### And more
-
-```node
-- forever: set to true to pass keepAlive true
-```
 Class reference
 ---------
 
-* [RestClient](doc/classes/RestClient.md)
+* [CarbonClient](doc/classes/CarbonClient.md)
 * [Endpoint](doc/classes/Endpoint.md)
 * [Collection](doc/classes/Collection.md)
 * [Cursor](doc/classes/Cursor.md)
