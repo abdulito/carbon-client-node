@@ -309,14 +309,36 @@ usersCollection.find({}, {
 
 ```
 
+### Error handling
+Errors raised by CarbonClient are instances of the HttpError class defined in [HttpErrors](https://github.com/carbon-io/http-errors) module of carbon.
+An HttpError contains the http error code, message, and description.
+
+For asynchronous calls, The error object will be the first argument of the callback function.
+
+```node
+
+// GET http://localhost:8888/doesnotexit
+client.getEndpoint("doesnotexit").get(function(e, response) {
+  if(e) {
+      console.log("Caught an error")
+      console.log("code: " + e.code); // 404
+      console.log("message: " + e.message);
+      console.log("description: " + e.description);
+  }
+})
+```
+
 
 ### Synchronized calls (calling with no callbacks)
 It is super easy to make sync calls with CarbonClient. All you have do is just call same methods but just without passing a callback function.
-sync calls must be made within a fiber.
+Sync calls must be made withing a fiber. The main difference is that the results returned by the method and if there was an error, then it will be raised.
 
 ```node
-var fiber = require('fiber')
-var __  = fiber.__(module, true)
+
+// This example uses the carbon-io fibers module to create a fiber.
+// For more info, see https://github.com/carbon-io/fibers
+var fibers = require('fibers')
+var __  = fibers.__(module)
 
 var CarbonClient = require('carbon-client-node')
 
@@ -341,48 +363,50 @@ __(
     console.log("Response from /users:")
     console.log(res.body)
 
+
+    // sync collection find
+    users = client.getCollection("users").find().toArray()
+    console.log(users[0])
+
+    // sync collection each
+    client.getCollection("users").find().eachSync(function(e, item) {
+        console.log(item)
+    })
+
+    // return the first user
+
+    user = client.getCollection("users").find().next()
+    console.log(user)
+
+    // sync insert
+
+    var result = client.getCollection("users").insert({
+            username: "joe"
+      })
+
+
+    console.log(result.ok)
+
+
+
+    // Error handling
+    // GET http://localhost:8888/doesnotexit
+
+    try {
+        client.getEndpoint("doesnotexit").get()
+    } catch(e) {
+        console.log("Caught an error")
+        console.log("code: " + e.code); // 404
+        console.log("message: " + e.message);
+        console.log("description: " + e.description);
+    }
+
   }
 )
 
 
 ```
 
-
-### Error handling
-Errors raised by CarbonClient are instances of the HttpError class defined in [HttpErrors](https://github.com/carbon-io/http-errors) module of carbon.
-An HttpError contains the http error code, message, and description.
-
-For asynchronous calls, The error object will be the first argument of the callback function.
-
-```node
-
-// GET http://localhost:8888/doesnotexit
-client.getEndpoint("doesnotexit").get(function(e, response) {
-  if(e) {
-      console.log("Caught an error")
-      console.log("code: " + e.code); // 404
-      console.log("message: " + e.message);
-      console.log("description: " + e.description);
-  }
-})
-```
-
-For synchronous calls, the errors are raised back so it will have to be caught within a try-catch.
-
-```node
-
-// GET http://localhost:8888/doesnotexit
-
-try {
-    client.getEndpoint("doesnotexit").get()
-} catch(e) {
-    console.log("Caught an error")
-    console.log("code: " + e.code); // 404
-    console.log("message: " + e.message);
-    console.log("description: " + e.description);
-}
-
-```
 
 ### Endpoint tree
 
