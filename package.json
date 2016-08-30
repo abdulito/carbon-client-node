@@ -20,7 +20,7 @@
     "mongodb-extended-json": "1.1.2",
     "carbon-client": "git+ssh://git@github.com:carbon-io/carbon-client-js.git#v0.0.8",
     "@carbon-io/fibers": "git+ssh://git@github.com/carbon-io/fibers.git#v0.3.0",
-    "nock": "7.7.2"
+    "nock": "git+ssh://git@github.com/abdulito/nock.git"
   },
   "preferGlobal": false
 }

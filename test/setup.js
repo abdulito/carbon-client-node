@@ -25,7 +25,7 @@ nock(testUrl).patch('/patch-test').reply(200, "PATCH").persist()
 nock(testUrl).delete('/delete-test').reply(200, "DELETE").persist()
 nock(testUrl).head('/head-test').reply(200, "HEAD").persist()
 // OPTIONS http method not supported by nock
-//nock(testUrl).options('/options-test').reply(200, "OPTIONS").persist()
+nock(testUrl).options('/options-test').reply(200, "OPTIONS").persist()
 
 /**********************************************************************
  * /users
