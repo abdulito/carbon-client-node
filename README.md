@@ -342,10 +342,9 @@ var __  = fibers.__(module)
 
 var CarbonClient = require('carbon-client-node')
 
-
-
-// create the client object
-var client = new CarbonClient("http://localhost:8888")
+```
+##### http methods sync
+```node
 
 __(
   function() {
@@ -363,32 +362,77 @@ __(
     console.log("Response from /users:")
     console.log(res.body)
 
+})
+```
 
-    // sync collection find
-    users = client.getCollection("users").find().toArray()
-    console.log(users[0])
+##### sync Collection methods
 
-    // sync collection each
-    client.getCollection("users").find().eachSync(function(e, item) {
-        console.log(item)
-    })
+Example for  sync ```Collection.insert()``` method
 
-    // return the first user
-
-    user = client.getCollection("users").find().next()
-    console.log(user)
-
+```node
+__(
+  function() {
     // sync insert
-
     var result = client.getCollection("users").insert({
             username: "joe"
       })
 
 
     console.log(result.ok)
+})
+
+```
+
+##### sync Cursor methods
 
 
+```node
 
+__(
+  function() {
+    // sync collection find
+    users = client.getCollection("users").find().toArray()
+    console.log(users[0])
+})
+
+
+```
+
+To use a sync version ```Cursor.each()```, you use the ```Cusor.eachSync()``` method for that
+
+```node
+
+__(
+  function() {
+
+
+    // sync collection each
+    client.getCollection("users").find().eachSync(function(e, item) {
+        console.log(item)
+    })
+})
+
+```
+
+Example for  sync ```Cursor.next()``` method
+
+```node
+__(
+  function() {
+    // return the first user
+
+    user = client.getCollection("users").find().next()
+    console.log(user)
+
+    // sync insert
+})
+```
+
+##### Error handling for sync methods
+
+```node
+__(
+  function() {
     // Error handling
     // GET http://localhost:8888/doesnotexit
 
