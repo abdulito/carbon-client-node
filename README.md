@@ -82,6 +82,18 @@ All http methods are supported through  ```Endpoint``` object. Each http method 
 
 ##### HTTP GET
 
+
+Supported calling forms for ```Endpoint.get()``` are as follows:
+
+*   get(cb)
+*   get(options, cb)
+
+For synchronized calls:
+
+*   get()
+*   get(options)
+
+
 ```node
 // require the client
 var CarbonClient = require('carbon-client-node');
@@ -136,6 +148,18 @@ endpoint.get(options, function(e, response) {
 
 ##### HTTP POST
 
+Supported calling forms for ```Endpoint.post()``` are as follows:
+
+*   post(cb)
+*   post(body, cb)
+*   post(body, options, cb)
+
+For synchronized calls:
+
+*   post()
+*   post(body)
+*   post(body, options)
+
 ```node
 //  post to /users
 client.getEndpoint("users").post({"name": "bob"}, function(e, response) {
@@ -145,10 +169,12 @@ client.getEndpoint("users").post({"name": "bob"}, function(e, response) {
 ```
 
 
-##### PUT/PATCH/HEAD/OPTIONS
+##### PUT/PATCH
 
-```PUT```, ```PATCH```, ```HEAD```, ```OPTIONS``` can be performed with ```Endpoint.put()```, ```Endpoint.patch()```, ```Endpoint.head()```, ```Endpoint.options()``` methods
- respectively. Arguments of these methods are similar to the ```Endpoint.post()``` method.
+```PUT```, ```PATCH``` can be performed with ```Endpoint.put()```, ```Endpoint.patch()``` methods
+ respectively. Arguments of these methods are all the same and similar to the ```Endpoint.post()``` method.
+
+
 
 ```node
 //  put to /users
@@ -158,6 +184,32 @@ client.getEndpoint("users").put({
   },
   function(e, response) {
     console.log("Response from /users:")
+    console.log(response.body)
+})
+```
+
+
+##### HEAD/OPTIONS/DELETE
+
+```HEAD```, ```OPTIONS```, ```DELETE``` can be performed with ```Endpoint.head()```, ```Endpoint.options()```, ```Endpoint.delete()```  methods
+ respectively. Arguments of these methods are all the same and similar to the ```Endpoint.get()``` method.
+
+Supported calling forms for ```Endpoint.head()``` are as follows:
+
+*   head(cb)
+*   head(options, cb)
+
+For synchronized calls:
+
+*   head()
+*   head(options)
+
+
+```node
+//  call http OPTIONS method
+client.getEndpoint("test-options").options(null,
+  function(e, response) {
+    console.log("Response from /test-options:")
     console.log(response.body)
 })
 ```
