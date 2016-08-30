@@ -27,6 +27,12 @@ nock(testUrl).head('/head-test').reply(200, "HEAD").persist()
 // OPTIONS http method not supported by nock
 nock(testUrl).options('/options-test').reply(200, "OPTIONS").persist()
 
+// test 201 status code
+nock(testUrl).get('/201-test').reply(201, "201 http status code").persist()
+
+// test response headers
+nock(testUrl).get('/response-headers-test').reply(200, "response headers", {"carbon-client": "cool"}).persist()
+
 /**********************************************************************
  * /users
  */

@@ -62,6 +62,19 @@ __(function() {
     console.log("options-test endpoint sync options result: " + res.body)
 
 
+    // 201 status
+    res = testClient.getEndpoint("201-test").get()
+    assert(res != null)
+    assert(res.statusCode == 201)
+    console.log("201-test endpoint sync result: " + res.body)
+
+
+    // response headers test
+    res = testClient.getEndpoint("response-headers-test").get()
+    assert(res != null)
+    assert(res.statusCode == 200)
+    assert(res.headers["carbon-client"] === "cool")
+    console.log("response headers test sync result: " + res.headers)
 
 })
 
