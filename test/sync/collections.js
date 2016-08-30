@@ -78,7 +78,7 @@ __(
 
     assert(result != null)
     assert(result.ok)
-    console.log("async insert result:")
+    console.log("sync insert result:")
     console.log(result)
 
 
