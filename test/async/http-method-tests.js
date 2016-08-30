@@ -57,3 +57,11 @@ testClient.getEndpoint("head-test").head(function(e, res) {
   console.log("head-test endpoint async get result: " + res.body)
 })
 
+// OPTIONS
+testClient.getEndpoint("options-test").options(function(e, res) {
+  assert( e == null)
+  assert(res != null)
+  assert(res.body === "OPTIONS")
+  console.log("options-test endpoint async get result: " + res.body)
+})
+
