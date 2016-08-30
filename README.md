@@ -80,7 +80,7 @@ All http methods are supported through  ```Endpoint``` object. Each http method 
 
 
 
-### HTTP GET
+##### HTTP GET
 
 ```node
 // require the client
@@ -98,8 +98,20 @@ endpoint.get(function(e, response) {
 })
 
 ```
+##### Response object
+The ```response``` object that is returned by ```CarbonClient``` is the response object from the nodejs ```request``` module.
+Full doc here https://github.com/request/request
 
-### Passing query string params
+Some available fields are:
+```node
+
+response.statusCode: http status code (int)
+response.headers: an object containing response headers
+response.body: response body
+
+```
+
+##### Passing query string params
 Query string params are passed as an object through the ```options.params``` argument of each http method
 ```node
 
@@ -122,7 +134,7 @@ endpoint.get(options, function(e, response) {
 ```
 
 
-### HTTP POST
+##### HTTP POST
 
 ```node
 //  post to /users
@@ -133,7 +145,7 @@ client.getEndpoint("users").post({"name": "bob"}, function(e, response) {
 ```
 
 
-### PUT/PATCH/HEAD/OPTIONS
+##### PUT/PATCH/HEAD/OPTIONS
 
 ```PUT```, ```PATCH```, ```HEAD```, ```OPTIONS``` can be performed with ```Endpoint.put()```, ```Endpoint.patch()```, ```Endpoint.head()```, ```Endpoint.options()``` methods
  respectively. Arguments of these methods are similar to the ```Endpoint.post()``` method.
