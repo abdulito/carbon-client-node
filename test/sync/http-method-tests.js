@@ -8,7 +8,7 @@ var __ = require('@carbon-io/fibers').__(module)
 
 __(function() {
 
-    console.log("Basic test (SYNC)")
+    console.log("http method tests (SYNC)")
 
 
     // GET

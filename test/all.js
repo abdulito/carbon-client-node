@@ -8,11 +8,11 @@ __(
   function() {
 
     require('./path-tests')
-    require('./async/basic')
-    require('./sync/basic')
+    require('./async/http-method-tests')
     require('./async/collections')
-    require('./sync/collections')
     require('./async/error')
+    require('./sync/http-method-tests')
+    require('./sync/collections')
     require('./sync/error')
     require('./auth-tests')
 

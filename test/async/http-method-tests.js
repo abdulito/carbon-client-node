@@ -5,8 +5,7 @@
 var assert = require('assert');
 var testClient = require('../setup')
 
-// test hello async
-console.log("Basic test (ASYNC)")
+console.log("http method tests (ASYNC)")
 
 
 // GET
