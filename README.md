@@ -343,7 +343,7 @@ var __  = fibers.__(module)
 var CarbonClient = require('carbon-client-node')
 
 ```
-##### http methods sync
+##### Synchronized HTTP Methods
 ```node
 
 __(
@@ -365,7 +365,7 @@ __(
 })
 ```
 
-##### sync Collection methods
+##### Synchronized Collection Methods
 
 Example for  sync ```Collection.insert()``` method
 
@@ -383,7 +383,7 @@ __(
 
 ```
 
-##### sync Cursor methods
+##### Synchronized Cursor Methods
 
 
 ```node
@@ -428,7 +428,7 @@ __(
 })
 ```
 
-##### Error handling for sync methods
+##### Error Handling for Synchronized Methods
 
 ```node
 __(
@@ -452,7 +452,7 @@ __(
 ```
 
 
-### Endpoint tree
+### Endpoint Tree
 
 As a convenience, ```Endpoint``` allow accessing sub-endpoints using the ```Endpoint.getEndpoint()``` method. You can also
  access the parent Endpoint by ```Endpoint.parent```
@@ -475,7 +475,7 @@ console.log(e1.getFullUrl()) // this will return client.uri + endpoint's absolut
 
 ```
 
-### passing headers
+### Passing Headers
 
 Headers can be passed as JSON with the ```options.headers``` option. This can be client-level or operation-level.
 This is an example of an operation-level header passing.
@@ -550,7 +550,7 @@ var defaultOptions = {
 client = new CarbonClient(uri, defaultOptions);
 
 ```
-##### json/plain-text results
+##### JSON/Plain-text Results
 
 All results are in JSON by default. For plain text, set ```options.json``` to false:
 
