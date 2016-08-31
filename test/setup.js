@@ -91,24 +91,48 @@ function parseQueryString(uri) {
   return result
 }
 /**********************************************************************
- * GET /users
+ * users.find(): GET /users
  */
 
 nock(testUrl).get('/users')
   .reply(200, get_request_test_users).persist();
 
 /**********************************************************************
- * GET /users and allow queries
+ * users.find(): GET /users and allow queries
  */
 
 nock(testUrl).get('/users').query(true)
   .reply(200, get_request_test_users).persist();
 
 /**********************************************************************
- * POST /users
+ * users.insert(): POST /users
  */
 nock(testUrl).post('/users')
 .reply(200, {
+    ok: true
+  }).persist();
+
+/**********************************************************************
+ * users.remove(): DELETE /users
+ */
+nock(testUrl).delete('/users')
+  .reply(200, {
+    ok: true
+  }).persist();
+
+/**********************************************************************
+ * users.remove(): DELETE /users
+ */
+nock(testUrl).delete('/users')
+  .reply(200, {
+    ok: true
+  }).persist();
+
+/**********************************************************************
+ * users.removeObject("123"): DELETE /users/123
+ */
+nock(testUrl).delete('/users/123')
+  .reply(200, {
     ok: true
   }).persist();
 

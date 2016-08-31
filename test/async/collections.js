@@ -98,6 +98,34 @@ usersCollection.insert({
 )
 
 
+// test remove users
+console.log("testing users collection async remove")
+
+usersCollection.remove({
+    username: "joe"
+  },
+  function(e, result) {
+    assert(e == null)
+    assert(result != null)
+    assert(result.ok)
+    console.log("async remove result:")
+    console.log(result)
+  }
+)
+
+// test removeObject
+
+usersCollection.removeObject("123",
+  function(e, result) {
+    assert(e == null)
+    assert(result != null)
+    assert(result.ok)
+    console.log("async removeObject result:")
+    console.log(result)
+  }
+)
+
+
 
 
 

@@ -81,6 +81,24 @@ __(
     console.log("sync insert result:")
     console.log(result)
 
+      // test remove users
+    result = usersCollection.remove({
+            username: "joe"
+    })
+
+    assert(result != null)
+    assert(result.ok)
+    console.log("sync remove result:")
+    console.log(result)
+
+
+    // test removeObject
+
+    result = usersCollection.removeObject("123")
+    assert(result != null)
+    assert(result.ok)
+    console.log("sync removeObject result:")
+    console.log(result)
 
 })
 
