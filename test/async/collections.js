@@ -125,6 +125,23 @@ usersCollection.removeObject("123",
   }
 )
 
+// test updateObject
+
+usersCollection.update({
+    username: "joe"
+  }, {
+    "$set": {
+      email: "joe@foo.com"
+    }
+  },
+  function(e, result) {
+    assert(e == null)
+    assert(result != null)
+    assert(result.ok)
+    console.log("async update result:")
+    console.log(result)
+  })
+
 // test saveObject
 
 usersCollection.saveObject("123", {

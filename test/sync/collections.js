@@ -100,6 +100,21 @@ __(
     console.log("sync removeObject result:")
     console.log(result)
 
+    // test update
+
+    result = usersCollection.update({
+        username: "joe"
+    }, {
+        "$set": {
+            email: "joe@foo.com"
+        }
+    })
+
+    assert(result != null)
+    assert(result.ok)
+    console.log("sync update result:")
+    console.log(result)
+
     // test saveObject
 
     result = usersCollection.saveObject("123", {username: "joe"})

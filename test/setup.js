@@ -113,6 +113,14 @@ nock(testUrl).post('/users')
   }).persist();
 
 /**********************************************************************
+ * users.update(): PUT /users
+ */
+nock(testUrl).put('/users')
+  .reply(200, {
+    ok: true
+  }).persist();
+
+/**********************************************************************
  * users.remove(): DELETE /users
  */
 nock(testUrl).delete('/users')
