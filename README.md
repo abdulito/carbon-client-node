@@ -223,11 +223,9 @@ CarbonClient provides convenient interfaces to access collections. It provides c
 
 ```find()``` supports the following calling forms
 
-```node
- *   find(cb)
- *   find(query, cb)
- *   find(query, options, cb)
-```
+*   find(query)
+*   find(query, options)
+
 
 
 ```node
@@ -347,7 +345,7 @@ var usersCollection = client.getCollection("users")
 // find all users and get _id and name, address.city only
 usersCollection.find({}, {
     projection: {
-      _id
+      _id: 1,
       "name": 1,
       "address.city": 1
     }
@@ -373,6 +371,57 @@ usersCollection.find({}, {
 })
 
 ```
+#### findObject()
+
+Finds the object with the specified object id.
+
+Supported calling forms:
+*   findObject(id, cb)
+
+For synchronized calls:
+*   findObject(id)
+
+
+
+#### insert()
+
+Supported calling forms:
+*   insert(obj, cb)
+
+For synchronized calls:
+*   insert(obj)
+
+```node
+usersCollection.insert({
+    username: "joe"
+  },
+  function(e, result) {
+    assert(result.ok) // true for success
+    console.log(result)
+  }
+)
+```
+
+
+#### update()
+
+Supported calling forms:
+*   update(query, obj, cb)
+*   update(query, obj, options, cb)
+
+For synchronized calls:
+*   update(query, obj)
+*   update(query, obj, options)
+
+#### updateObject()
+
+#### saveObject()
+
+#### remove()
+
+#### removeObject()
+
+
 
 ### Error handling
 Errors raised by CarbonClient are instances of the HttpError class defined in [HttpErrors](https://github.com/carbon-io/http-errors) module of carbon.
