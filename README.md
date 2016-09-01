@@ -80,7 +80,7 @@ All http methods are supported through  ```Endpoint``` object. Each http method 
 
 
 
-##### HTTP GET
+#### GET
 
 
 Supported calling forms for ```Endpoint.get()``` are as follows:
@@ -110,7 +110,7 @@ endpoint.get(function(e, response) {
 })
 
 ```
-##### Response object
+#### Response object
 The ```response``` object that is returned by ```CarbonClient``` is the response object from the nodejs ```request``` module.
 Full doc here https://github.com/request/request
 
@@ -146,7 +146,7 @@ endpoint.get(options, function(e, response) {
 ```
 
 
-##### HTTP POST
+#### POST
 
 Supported calling forms for ```Endpoint.post()``` are as follows:
 
@@ -169,7 +169,7 @@ client.getEndpoint("users").post({"name": "bob"}, function(e, response) {
 ```
 
 
-##### PUT/PATCH
+#### PUT/PATCH
 
 ```PUT```, ```PATCH``` can be performed with ```Endpoint.put()```, ```Endpoint.patch()``` methods
  respectively. Arguments of these methods are all the same and similar to the ```Endpoint.post()``` method.
@@ -189,7 +189,7 @@ client.getEndpoint("users").put({
 ```
 
 
-##### HEAD/OPTIONS/DELETE
+#### HEAD/OPTIONS/DELETE
 
 ```HEAD```, ```OPTIONS```, ```DELETE``` can be performed with ```Endpoint.head()```, ```Endpoint.options()```, ```Endpoint.delete()```  methods
  respectively. Arguments of these methods are all the same and similar to the ```Endpoint.get()``` method.
@@ -215,8 +215,9 @@ client.getEndpoint("test-options").options(null,
 ```
 
 ### Collections and Cursors
-CarbonClient provides convenient interfaces to access collections. It provides classes similar to MongoDB Driver Collection/Cursor classes.
- you can perform ```find()```, ```insert()```, ```update()```, ```findObject()```, ```updateObject()```, ```saveObject()```, ```remove()```, ```removeObject()```.
+CarbonClient provides convenient interfaces to access collections. It provides classes similar to MongoDB Driver Collection/Cursor classes. You can perform ```find()```, ```insert()```, ```update()```, ```findObject()```, ```updateObject()```, ```saveObject()```, ```remove()```, ```removeObject()```.
+ 
+#### find()
  The ```find()``` method returns a ```Cursor``` object which is used to iterate over results.
 
 
@@ -249,7 +250,7 @@ usersCollection.find({"name": "joe"}).toArray(function(e, data) {
 The ```find()``` method returns a ```Cursor``` object which is used to iterate over results.
 
 
-### Cursor iteration
+##### Cursor iteration
 The ```Cursor.toArray()``` loads all results into a single array object which could be memory consuming.
 To avoid that, use the ```Cursor.each()``` method which takes a function to iterate over each item of results.
 It will return ```null``` when the cursor finishes.
@@ -288,7 +289,7 @@ cursor.next(function(e, item) {
 
 ```
 
-### Cursor pagination
+##### Cursor pagination
 
 Pagination for results returned by ```find()``` can be achieved  with ```skip``` and ```limit``` options through the ```options``` argument:
 
@@ -305,7 +306,7 @@ var cursor = usersCollection.find({}, {skip:100, limit:100}).toArray(function(e,
 ```
 
 
-### Sorting find() results
+##### Sorting find() results
 
 ```options``` argument also allows ```sort``` which takes a key to sort on:
 
@@ -324,7 +325,7 @@ var cursor = usersCollection.find({}, {sort:{"name": -1}}).toArray(function(e, d
 ```
 
 
-### Limiting fields within find() results
+##### Limiting fields within find() results
 
 You can limit the set of fields returned by find using ```options.projection``` argument. The ```projection``` argument
 can be specified in the following form:
