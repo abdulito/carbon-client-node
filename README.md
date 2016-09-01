@@ -406,46 +406,46 @@ usersCollection.insert({
 #### update()
 
 Supported calling forms:
-*   update(query, obj, cb)
-*   update(query, obj, options, cb)
+*   ```update(query, obj, cb)```
+*   ```update(query, obj, options, cb)```
 
 For synchronized calls:
-*   update(query, obj)
-*   update(query, obj, options)
+*   ```update(query, obj)```
+*   ```update(query, obj, options)```
 
 #### updateObject()
 
 Supported calling forms:
-*   updateObject(id, update, cb)
+*   ```updateObject(id, update, cb)```
 
 For synchronized calls:
-*   updateObject(id, update)
+*   ```updateObject(id, update)```
 
 #### saveObject()
 
 Supported calling forms:
-*   saveObject(id, obj, cb)
+*   ```saveObject(id, obj, cb)```
 
 For synchronized calls:
-*   saveObject(id, obj)
+*   ```saveObject(id, obj)```
 
 #### remove()
 
 Supported calling forms:
-*   remove(query, cb)
-*   remove(query, options, cb)
+*   ```remove(query, cb)```
+*   ```remove(query, options, cb)```
 
 For synchronized calls:
-*   remove(query)
-*   remove(query, options)
+*   ```remove(query)```
+*   ```remove(query, options)```
 
 #### removeObject()
 
 Supported calling forms:
-*   removeObject(id, cb)
+*   ```removeObject(id, cb)```
 
 For synchronized calls:
-*   removeObject(id)
+*   ```removeObject(id)```
 
 ### Error handling
 Errors raised by CarbonClient are instances of the HttpError class defined in [HttpErrors](https://github.com/carbon-io/http-errors) module of carbon.
