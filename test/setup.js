@@ -121,17 +121,32 @@ nock(testUrl).delete('/users')
   }).persist();
 
 /**********************************************************************
- * users.remove(): DELETE /users
+ * users.removeObject("123"): DELETE /users/123
  */
-nock(testUrl).delete('/users')
+nock(testUrl).delete('/users/123')
   .reply(200, {
     ok: true
   }).persist();
 
 /**********************************************************************
- * users.removeObject("123"): DELETE /users/123
+ * users.findObject("123"): GET /users/123
  */
-nock(testUrl).delete('/users/123')
+nock(testUrl).get('/users/123')
+  .reply(200, TEST_USERS[0]).persist();
+
+
+/**********************************************************************
+ * users.saveObject("123"): PUT /users/123
+ */
+nock(testUrl).put('/users/123')
+  .reply(200, {
+    ok: true
+  }).persist();
+
+/**********************************************************************
+ * users.updateObject("123"): PATCH /users/123
+ */
+nock(testUrl).patch('/users/123')
   .reply(200, {
     ok: true
   }).persist();
