@@ -53,7 +53,7 @@ Then install the package dependencies like this:
 Quick Start
 ---------
 
-
+This is a simple example for an http get operation
 
 ```node
 // require the client
@@ -67,6 +67,33 @@ client.getEndpoint("hello").get(function(e, response) {
   console.log("Response from /hello: " + response.body)
 })
 
+```
+
+Quick Start (synchronized style)
+---------
+
+In general, all CarbonClient methods that take a callback function can be invoked synchronously (within a fiber)
+by simply not passing a callback function (which is always the last argument). That's the general rule.
+
+```node
+// This example uses the carbon-io fibers module to create a fiber.
+// For more info, see https://github.com/carbon-io/fibers
+
+var fibers = require('fibers')
+var __  = fibers.__(module)
+
+// require the client
+var CarbonClient = require('carbon-client-node')
+
+__(
+  function() {
+    var client = new CarbonClient("http://localhost:8888")
+
+    // Synchronized call, not how
+    var response = client.getEndpoint("hello").get()
+    console.log("Response from /hello: " + response.body)
+
+})
 ```
 
 
