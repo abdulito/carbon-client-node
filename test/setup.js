@@ -108,8 +108,9 @@ nock(testUrl).get('/users').query(true)
  * users.insert(): POST /users
  */
 nock(testUrl).post('/users')
-.reply(200, {
-    ok: true
+.reply(200, function(uri, requestBody){
+  requestBody["_id"] = "123"
+  return requestBody
   }).persist();
 
 /**********************************************************************

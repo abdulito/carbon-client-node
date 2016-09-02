@@ -91,7 +91,7 @@ usersCollection.insert({
   function(e, result) {
     assert(e == null)
     assert(result != null)
-    assert(result.ok)
+    assert(result["_id"] != null)
     console.log("async insert result:")
     console.log(result)
   }

@@ -77,7 +77,7 @@ __(
 
 
     assert(result != null)
-    assert(result.ok)
+    assert(result["_id"] != null)
     console.log("sync insert result:")
     console.log(result)
 
