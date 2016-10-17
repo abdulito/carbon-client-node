@@ -1,6 +1,6 @@
 {
   "name": "carbon-client-node",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "description": "carbon client node",
   "contributors": [
     "Will Shulman <will@objectlabs.com>",
@@ -19,7 +19,7 @@
   "dependencies": {
     "mongodb-extended-json": "1.1.2",
     "carbon-client": "carbon-io/carbon-client-js.git#v0.0.15",
-    "@carbon-io/fibers": "carbon-io/fibers.git#v0.3.2",
+    "@carbon-io/fibers": "carbon-io/fibers.git#v0.3.3",
     "nock": "abdulito/nock.git"
   },
   "scripts": {
