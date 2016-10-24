@@ -20,7 +20,7 @@
     "mongodb-extended-json": "1.1.2",
     "@carbon-io/carbon-client": "carbon-io/carbon-client-js.git#v0.1.2",
     "@carbon-io/fibers": "carbon-io/fibers.git#v0.3.4",
-    "nock": "abdulito/nock.git"
+    "nock": "8.2.0"
   },
   "scripts": {
     "test": "node test/all.js"
