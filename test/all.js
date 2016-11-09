@@ -15,6 +15,7 @@ __(
     require('./sync/collections')
     require('./sync/error')
     require('./auth-tests')
+    require('./timeout-test')
 
   }
 )
