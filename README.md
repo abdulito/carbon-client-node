@@ -741,7 +741,7 @@ client = new CarbonClient(uri, {forever: true});
 ##### timeout
 
 timeout can be set through the ```timeout``` option. Its an integer representing timeout in milliseconds.
-This applies to both connection timeout and read timeout.
+This applies to both connection and read timeouts.
 
 ```node
 client = new CarbonClient(uri, {timeout: true});
