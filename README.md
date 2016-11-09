@@ -738,6 +738,15 @@ keepAlive can be set through the ```forever``` option
 client = new CarbonClient(uri, {forever: true});
 ```
 
+##### timeout
+
+timeout can be set through the ```timeout``` option. Its an integer representing timeout in milliseconds.
+This applies to both connection timeout and read timeout.
+
+```node
+client = new CarbonClient(uri, {timeout: true});
+```
+
 Class reference
 ---------
 
