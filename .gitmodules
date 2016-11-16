@@ -1,0 +1,4 @@
+[submodule "docs/packages/carbon-client"]
+	path = docs/packages/carbon-client
+	url = git@github.com:carbon-io/carbon-client
+	branch = integrate-docs
