@@ -1,6 +1,6 @@
 {
     "name": "@carbon-io/carbon-client-node", 
-    "version": "0.2.10-gitcmds", 
+    "version": "0.2.11-gitcmds", 
     "description": "carbon client node", 
     "contributors": [
         "Will Shulman <will@objectlabs.com>", 
