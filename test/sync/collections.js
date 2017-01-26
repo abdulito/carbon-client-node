@@ -6,10 +6,7 @@ var assert = require('assert');
 var testClient = require('../setup')
 var __ = require('@carbon-io/fibers').__(module)
 
-__(
-  function() {
-
-
+module.exports = function() {
     console.log("Collections test ASYNC")
 
     var usersCollection = testClient.getCollection("users")
@@ -135,8 +132,5 @@ __(
     console.log("sync updateObject result:")
     console.log(result)
 
-})
-
-
-
+}
 

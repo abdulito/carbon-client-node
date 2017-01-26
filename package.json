@@ -1,5 +1,6 @@
 {
   "name": "@carbon-io/carbon-client-node",
+  "license": "MIT",
   "version": "0.2.9",
   "description": "carbon client node",
   "contributors": [
@@ -19,7 +20,7 @@
   "dependencies": {
     "mongodb-extended-json": "1.1.2",
     "@carbon-io/carbon-client": "0.1.x",
-    "@carbon-io/fibers": "0.3.x",
+    "@carbon-io/fibers": "0.4.x",
     "nock": "8.2.0"
   },
   "scripts": {

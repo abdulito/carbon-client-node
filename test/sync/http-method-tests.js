@@ -6,7 +6,7 @@ var assert = require('assert');
 var testClient = require('../setup')
 var __ = require('@carbon-io/fibers').__(module)
 
-__(function() {
+module.exports = function() {
 
     console.log("http method tests (SYNC)")
 
@@ -76,5 +76,5 @@ __(function() {
     assert(res.headers["carbon-client"] === "cool")
     console.log("response headers test sync result: " + res.headers)
 
-})
+}
 
