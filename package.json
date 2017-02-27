@@ -1,7 +1,7 @@
 {
     "name": "@carbon-io/carbon-client-node", 
     "license": "MIT", 
-    "version": "0.4.0", 
+    "version": "0.4.1", 
     "description": "carbon client node", 
     "contributors": [
         "Will Shulman <will@objectlabs.com>", 
