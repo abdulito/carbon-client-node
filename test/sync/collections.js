@@ -4,7 +4,7 @@
 
 var assert = require('assert');
 var testClient = require('../setup')
-var __ = require('@carbon-io/fibers').__(module)
+var __ = require('@carbon-io/carbon-core').fibers.__(module)
 
 module.exports = function() {
     console.log("Collections test ASYNC")

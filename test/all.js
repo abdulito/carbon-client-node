@@ -2,7 +2,7 @@
  * Created by abdul on 8/26/15.
  */
 
-var __ = require('@carbon-io/fibers').__(module)
+var __ = require('@carbon-io/carbon-core').fibers.__(module)
 
 __(
   function() {
