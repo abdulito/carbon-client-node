@@ -1,14 +1,32 @@
-/**
- * Created by abdul on 3/17/2016.
+var testClient = require('./setup')
+var carbon_core = require('@carbon-io/carbon-core')
+
+var o   = carbon_core.atom.o(module).main
+
+var testtube = carbon_core.testtube
+var assert = require('assert')
+
+
+/***********************************************************************************************************************
+ *
  */
+module.exports = o({
 
-var assert = require('assert');
-var testClient = require('../setup')
-var __ = require('@carbon-io/carbon-core').fibers.__(module)
+  /*********************************************************************************************************************
+   * _type
+   */
+  _type: testtube.Test,
 
-module.exports = function() {
-    console.log("Collections test ASYNC")
+  /*********************************************************************************************************************
+   * name
+   */
+  name: "CollectionTest",
 
+
+  /*********************************************************************************************************************
+   *
+   */
+  doTest: function () {
     var usersCollection = testClient.getCollection("users")
 
     // test find.toArray()
@@ -69,8 +87,8 @@ module.exports = function() {
     console.log("testing users collection async insert")
 
     var result = usersCollection.insert({
-        username: "joe"
-      })
+      username: "joe"
+    })
 
 
     assert(result != null)
@@ -78,9 +96,9 @@ module.exports = function() {
     console.log("sync insert result:")
     console.log(result)
 
-      // test remove users
+    // test remove users
     result = usersCollection.remove({
-            username: "joe"
+      username: "joe"
     })
 
     assert(result != null)
@@ -100,11 +118,11 @@ module.exports = function() {
     // test update
 
     result = usersCollection.update({
-        username: "joe"
+      username: "joe"
     }, {
-        "$set": {
-            email: "joe@foo.com"
-        }
+      "$set": {
+        email: "joe@foo.com"
+      }
     })
 
     assert(result != null)
@@ -122,15 +140,14 @@ module.exports = function() {
 
     // test updateObject
     result = usersCollection.updateObject("123", {
-        "$set": {
-            email: "joe@foo.com"
-        }
+      "$set": {
+        email: "joe@foo.com"
+      }
     })
 
     assert(result != null)
     assert(result.ok)
     console.log("sync updateObject result:")
     console.log(result)
-
-}
-
+  }
+})

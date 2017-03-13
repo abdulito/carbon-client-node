@@ -1,15 +1,32 @@
-/**
- * Created by abdul on 3/22/16.
+var testClient = require('./setup')
+
+var carbon_core = require('@carbon-io/carbon-core')
+
+var o   = carbon_core.atom.o(module).main
+var _o   = carbon_core.bond._o(module)
+var testtube = carbon_core.testtube
+var assert = require('assert')
+
+/***********************************************************************************************************************
+ *
  */
+module.exports = o({
 
-var assert = require('assert');
-var testClient = require('../setup')
-var __ = require('@carbon-io/carbon-core').fibers.__(module)
+  /*********************************************************************************************************************
+   * _type
+   */
+  _type: testtube.Test,
 
-module.exports = function() {
+  /*********************************************************************************************************************
+   * name
+   */
+  name: "HttpMethodsTest",
 
-    console.log("http method tests (SYNC)")
 
+  /*********************************************************************************************************************
+   *
+   */
+  doTest: function () {
 
     // GET
     var res = testClient.getEndpoint("get-test").get()
@@ -76,5 +93,7 @@ module.exports = function() {
     assert(res.headers["carbon-client"] === "cool")
     console.log("response headers test sync result: " + res.headers)
 
-}
+  }
+})
+
 
