@@ -26,6 +26,7 @@
     },
     "dependencies": {
         "mongodb-extended-json": "1.1.2", 
+        "@carbon-io/fibers": "0.5.x",
         "@carbon-io/carbon-client": "0.3.x", 
         "nock": "8.2.0"
     }, 
