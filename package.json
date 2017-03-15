@@ -19,10 +19,14 @@
     "engines": {
         "node": ">=0.12.0"
     }, 
+    "devDependencies": {
+        "@carbon-io/atom": "0.5.x",
+        "@carbon-io/bond": "0.4.x",
+        "@carbon-io/test-tube": "0.4.x"
+    },
     "dependencies": {
         "mongodb-extended-json": "1.1.2", 
         "@carbon-io/carbon-client": "0.3.x", 
-        "@carbon-io/carbon-core": "0.4.x", 
         "nock": "8.2.0"
     }, 
     "scripts": {
