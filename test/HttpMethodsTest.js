@@ -1,98 +1,143 @@
-var testClient = require('./setup')
+var assert = require('assert')
 
-var o   = require('@carbon-io/atom').o(module).main
+var _ = require('lodash')
+
+var __  = require('@carbon-io/fibers').__(module)
+var o   = require('@carbon-io/atom').o(module)
 var _o  = require('@carbon-io/bond')._o(module)
 var testtube = require('@carbon-io/test-tube')
 
-var assert = require('assert')
-
-/***********************************************************************************************************************
+/******************************************************************************
  *
  */
-module.exports = o({
+__.main(function() {
+  module.exports = o.main({
 
-  /*********************************************************************************************************************
-   * _type
-   */
-  _type: testtube.Test,
+    /********************************************************************
+     * _type
+     */
+    _type: testtube.Test,
 
-  /*********************************************************************************************************************
-   * name
-   */
-  name: "HttpMethodsTest",
+    /********************************************************************
+     * name
+     */
+    name: "HttpMethodsTest",
 
+    /********************************************************************
+     * setup
+     */
+    setup: function(ctx) {
+      ctx.global.testClient = require('./setup')
+    },
 
-  /*********************************************************************************************************************
-   *
-   */
-  doTest: function () {
+    /********************************************************************
+     * teardown
+     */
+    teardown: function(ctx) {
+      delete ctx.global.testClient
+    },
 
-    // GET
-    var res = testClient.getEndpoint("get-test").get()
-    assert(res != null)
-    assert(res.body === "GET")
-    assert(res.statusCode == 200)
-    console.log("get-test endpoint sync get result: " + res.body)
-
-
-
-    // POST
-    res = testClient.getEndpoint("post-test").post()
-    assert(res != null)
-    assert(res.body === "POST")
-    assert(res.statusCode == 200)
-    console.log("get-test endpoint sync get result: " + res.body)
-
-    // PUT
-    res = testClient.getEndpoint("put-test").put()
-    assert(res != null)
-    assert(res.body === "PUT")
-    console.log("put-test endpoint sync put result: " + res.body)
-
-    // PATCH
-    res = testClient.getEndpoint("patch-test").patch()
-    assert(res != null)
-    assert(res.body === "PATCH")
-    assert(res.statusCode == 200)
-    console.log("patch-test endpoint sync patch result: " + res.body)
-
-    // DELETE
-    res = testClient.getEndpoint("delete-test").delete()
-    assert(res != null)
-    assert(res.body === "DELETE")
-    assert(res.statusCode == 200)
-    console.log("delete-test endpoint sync delete result: " + res.body)
-
-    // HEAD
-    res = testClient.getEndpoint("head-test").head()
-    assert(res != null)
-    assert(res.body === "HEAD")
-    assert(res.statusCode == 200)
-    console.log("head-test endpoint sync head result: " + res.body)
-
-    // OPTIONS
-    res = testClient.getEndpoint("options-test").options()
-    assert(res != null)
-    assert(res.body === "OPTIONS")
-    assert(res.statusCode == 200)
-    console.log("options-test endpoint sync options result: " + res.body)
-
-
-    // 201 status
-    res = testClient.getEndpoint("201-test").get()
-    assert(res != null)
-    assert(res.statusCode == 201)
-    console.log("201-test endpoint sync result: " + res.body)
-
-
-    // response headers test
-    res = testClient.getEndpoint("response-headers-test").get()
-    assert(res != null)
-    assert(res.statusCode == 200)
-    assert(res.headers["carbon-client"] === "cool")
-    console.log("response headers test sync result: " + res.headers)
-
-  }
+    /********************************************************************
+     * tests
+     */
+    tests: [
+      o({
+        _type: testtube.Test,
+        name: 'GetTest',
+        description: 'get test',
+        doTest: function(ctx) {
+          var res = ctx.global.testClient.getEndpoint("get-test").get()
+          assert(!_.isNull(res))
+          assert.equal(res.body, "GET")
+          assert.equal(res.statusCode, 200)
+        }
+      }),
+      o({
+        _type: testtube.Test,
+        name: 'PostTest',
+        description: 'post test',
+        doTest: function(ctx) {
+          var res = ctx.global.testClient.getEndpoint("post-test").post()
+          assert(!_.isNull(res))
+          assert.equal(res.body, "POST")
+          assert.equal(res.statusCode, 200)
+        }
+      }),
+      o({
+        _type: testtube.Test,
+        name: 'PutTest',
+        description: 'put test',
+        doTest: function(ctx) {
+          var res = ctx.global.testClient.getEndpoint("put-test").put()
+          assert(!_.isNull(res))
+          assert.equal(res.body, "PUT")
+        }
+      }),
+      o({
+        _type: testtube.Test,
+        name: 'PatchTest',
+        description: 'patch test',
+        doTest: function(ctx) {
+          var res = ctx.global.testClient.getEndpoint("patch-test").patch()
+          assert(!_.isNull(res))
+          assert.equal(res.body, "PATCH")
+          assert.equal(res.statusCode, 200)
+        }
+      }),
+      o({
+        _type: testtube.Test,
+        name: 'DeleteTest',
+        description: 'delete test',
+        doTest: function(ctx) {
+          var res = ctx.global.testClient.getEndpoint("delete-test").delete()
+          assert(!_.isNull(res))
+          assert.equal(res.body, "DELETE")
+          assert.equal(res.statusCode, 200)
+        }
+      }),
+      o({
+        _type: testtube.Test,
+        name: 'HeadTest',
+        description: 'head test',
+        doTest: function(ctx) {
+          var res = ctx.global.testClient.getEndpoint("head-test").head()
+          assert(!_.isNull(res))
+          assert.equal(res.body, "HEAD")
+          assert.equal(res.statusCode, 200)
+        }
+      }),
+      o({
+        _type: testtube.Test,
+        name: 'OptionsTest',
+        description: 'options test',
+        doTest: function(ctx) {
+          var res = ctx.global.testClient.getEndpoint("options-test").options()
+          assert(!_.isNull(res))
+          assert.equal(res.body, "OPTIONS")
+          assert.equal(res.statusCode, 200)
+        }
+      }),
+      o({
+        _type: testtube.Test,
+        name: '201Test',
+        description: '201 test',
+        doTest: function(ctx) {
+          var res = ctx.global.testClient.getEndpoint("201-test").get()
+          assert(!_.isNull(res))
+          assert.equal(res.statusCode, 201)
+        }
+      }),
+      o({
+        _type: testtube.Test,
+        name: 'ResponseHeadersTest',
+        description: 'response headers test',
+        doTest: function(ctx) {
+          var res = ctx.global.testClient.getEndpoint("response-headers-test").get()
+          assert(!_.isNull(res))
+          assert.equal(res.statusCode, 200)
+          assert.equal(res.headers["carbon-client"], "cool")
+        }
+      }),
+    ],
+  })
 })
-
-

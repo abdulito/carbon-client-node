@@ -22,7 +22,8 @@
     "devDependencies": {
         "@carbon-io/atom": "0.5.x", 
         "@carbon-io/bond": "0.4.x", 
-        "@carbon-io/test-tube": "0.4.x"
+        "@carbon-io/test-tube": "0.4.x",
+        "lodash": "4.16.x"
     }, 
     "dependencies": {
         "mongodb-extended-json": "1.1.2", 
