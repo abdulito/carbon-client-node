@@ -1,44 +1,44 @@
-var testClient = require('./setup')
+var assert = require('assert')
 
-var o   = require('@carbon-io/atom').o(module).main
+var __  = require('@carbon-io/fibers').__(module)
+var o   = require('@carbon-io/atom').o(module)
 var _o  = require('@carbon-io/bond')._o(module)
 var testtube = require('@carbon-io/test-tube')
 
-var assert = require('assert')
-
-/***********************************************************************************************************************
+/******************************************************************************
  *
  */
-module.exports = o({
+__.main(function() {
+  module.exports = o.main({
 
-  /*********************************************************************************************************************
-   * _type
-   */
-  _type: testtube.Test,
+    /********************************************************************
+     * _type
+     */
+    _type: testtube.Test,
 
-  /*********************************************************************************************************************
-   * name
-   */
-  name: "ErrorTest",
+    /********************************************************************
+     * name
+     */
+    name: "ErrorTest",
 
+    /********************************************************************
+     * setup
+     */
+    setup: function(ctx) {
+      ctx.local.testClient = require('./setup')
+    },
 
-  /*********************************************************************************************************************
-   *
-   */
-  doTest: function () {
-
-    // error test
-
-    try {
-      testClient.getEndpoint("error").get()
-      // should never get here
-      assert(false)
-    } catch (e) {
-      assert(e != null)
-      console.log("Caught expected error:")
-      console.log(e)
-      assert(e.message === "ERROR")
-      assert(e.code === 500)
+    /********************************************************************
+     * doTest
+     */
+    doTest: function (ctx) {
+        assert.throws(function() {
+          ctx.local.testClient.getEndpoint("error").get()
+        }, function(err) {
+          assert.equal(err.message, "ERROR")
+          assert.equal(err.code, 500)
+          return true
+        })
     }
-  }
+  })
 })
