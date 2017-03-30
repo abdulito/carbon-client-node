@@ -108,34 +108,29 @@ nock(testUrl).get('/users').query(true)
  * users.insert(): POST /users
  */
 nock(testUrl).post('/users')
-.reply(200, function(uri, requestBody){
-  requestBody["_id"] = "123"
-  return requestBody
+.reply(201, undefined, {
+    location: '/users/123'
   }).persist();
 
 /**********************************************************************
  * users.update(): PUT /users
  */
 nock(testUrl).put('/users')
-  .reply(200, {
-    ok: true
+  .reply(201, undefined, {
+    location: '/users/123'
   }).persist();
 
 /**********************************************************************
  * users.remove(): DELETE /users
  */
 nock(testUrl).delete('/users')
-  .reply(200, {
-    ok: true
-  }).persist();
+  .reply(204, {n: 1}).persist();
 
 /**********************************************************************
  * users.removeObject("123"): DELETE /users/123
  */
 nock(testUrl).delete('/users/123')
-  .reply(200, {
-    ok: true
-  }).persist();
+  .reply(204).persist();
 
 /**********************************************************************
  * users.findObject("123"): GET /users/123
@@ -148,17 +143,13 @@ nock(testUrl).get('/users/123')
  * users.saveObject("123"): PUT /users/123
  */
 nock(testUrl).put('/users/123')
-  .reply(200, {
-    ok: true
-  }).persist();
+  .reply(204).persist();
 
 /**********************************************************************
  * users.updateObject("123"): PATCH /users/123
  */
 nock(testUrl).patch('/users/123')
-  .reply(200, {
-    ok: true
-  }).persist();
+  .reply(204).persist();
 
 /**********************************************************************
  * error

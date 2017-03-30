@@ -1,7 +1,7 @@
 {
     "name": "@carbon-io/carbon-client-node", 
     "license": "MIT", 
-    "version": "0.4.12", 
+    "version": "0.5.0", 
     "description": "carbon client node", 
     "contributors": [
         "Will Shulman <will@objectlabs.com>", 
@@ -28,7 +28,7 @@
     "dependencies": {
         "mongodb-extended-json": "1.1.2", 
         "@carbon-io/fibers": "0.5.x", 
-        "@carbon-io/carbon-client": "0.3.x", 
+        "@carbon-io/carbon-client": "0.4.x", 
         "nock": "8.2.0"
     }, 
     "scripts": {

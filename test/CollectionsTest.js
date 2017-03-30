@@ -115,8 +115,8 @@ __.main(function() {
           var result = ctx.global.usersCollection.remove({
             username: "joe"
           })
-          assert(!_.isNull(result))
-          assert(result.ok)
+          assert(!_.isNil(result))
+          assert.equal(result.n, 1)
         }
       }),
       o({
@@ -125,8 +125,7 @@ __.main(function() {
         description: 'test remove object',
         doTest: function(ctx) {
           var result = ctx.global.usersCollection.removeObject("123")
-          assert(!_.isNull(result))
-          assert(result.ok)
+          assert(_.isNull(result))
         }
       }),
       o({
@@ -134,6 +133,8 @@ __.main(function() {
         name: 'UpdateTest',
         description: 'test update',
         doTest: function(ctx) {
+          throw new testtube.errors.SkipTestError(
+            'update should be patch and have a different result than insert')
           var result = ctx.global.usersCollection.update({
             username: "joe"
           }, {
@@ -150,9 +151,9 @@ __.main(function() {
         name: 'SaveObjectTest',
         description: 'test save object',
         doTest: function(ctx) {
+          // XXX: this should include id in the request body
           var result = ctx.global.usersCollection.saveObject("123", {username: "joe"})
-          assert(!_.isNull(result))
-          assert(result.ok)
+          assert.equal(result.username, 'joe')
         }
       }),
       o({
@@ -165,8 +166,7 @@ __.main(function() {
               email: "joe@foo.com"
             }
           })
-          assert(!_.isNull(result))
-          assert(result.ok)
+          assert(_.isNil(result))
         }
       }),
     ]
