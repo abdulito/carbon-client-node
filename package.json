@@ -1,38 +1,38 @@
 {
-    "name": "@carbon-io/carbon-client-node",
-    "license": "MIT",
-    "version": "0.6.2",
-    "description": "carbon client node",
+    "name": "@carbon-io/carbon-client-node", 
+    "license": "MIT", 
+    "version": "0.6.3", 
+    "description": "carbon client node", 
     "contributors": [
-        "Will Shulman <will@objectlabs.com>",
+        "Will Shulman <will@objectlabs.com>", 
         "Abdul Alkhatib <abdul@objectlabs.com>"
-    ],
+    ], 
     "repository": {
-        "type": "git",
+        "type": "git", 
         "url": "https://github.com/carbon-io/carbon-client-node"
-    },
-    "main": "./lib/CarbonClient.js",
+    }, 
+    "main": "./lib/CarbonClient.js", 
     "directories": {
-        "lib": "./lib",
+        "lib": "./lib", 
         "bin": "./bin"
-    },
+    }, 
     "engines": {
         "node": ">=0.12.0"
-    },
+    }, 
     "devDependencies": {
-        "@carbon-io/atom": "0.7.x",
-        "@carbon-io/bond": "0.6.x",
-        "@carbon-io/test-tube": "0.6.x",
+        "@carbon-io/atom": "0.7.x", 
+        "@carbon-io/bond": "0.6.x", 
+        "@carbon-io/test-tube": "0.6.x", 
         "lodash": "4.16.x"
-    },
+    }, 
     "dependencies": {
-        "mongodb-extended-json": "1.1.2",
-        "@carbon-io/fibers": "0.7.x",
-        "@carbon-io/carbon-client": "0.5.x",
+        "mongodb-extended-json": "1.1.2", 
+        "@carbon-io/fibers": "0.7.x", 
+        "@carbon-io/carbon-client": "0.5.x", 
         "nock": "8.2.0"
-    },
+    }, 
     "scripts": {
         "test": "node test"
-    },
+    }, 
     "preferGlobal": false
 }
