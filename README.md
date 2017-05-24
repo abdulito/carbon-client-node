@@ -79,10 +79,9 @@ by simply not passing a callback function (which is always the last argument). T
 
 ```node
 // This example uses the carbon-io fibers module to create a fiber.
-// For more info, see https://github.com/carbon-io/fibers
+// For more info, see https://docs.carbon.io/en/latest/packages/carbon-core/docs/packages/fibers/docs/guide/index.html
 
-var fibers = require('fibers')
-var __  = fibers.__(module)
+var __ = require('@carbon-io/fibers').__(module)
 
 // require the client
 var CarbonClient = require('carbon-client-node')
@@ -152,7 +151,7 @@ response.body: response body
 
 ```
 
-##### Passing query string params
+#### Passing query string params
 Query string params are passed as an object through the ```options.params``` argument of each http method
 ```node
 
@@ -503,9 +502,8 @@ Sync calls must be made withing a fiber. The main difference is that the results
 ```node
 
 // This example uses the carbon-io fibers module to create a fiber.
-// For more info, see https://github.com/carbon-io/fibers
-var fibers = require('fibers')
-var __  = fibers.__(module)
+// For more info, https://docs.carbon.io/en/latest/packages/carbon-core/docs/packages/fibers/docs/guide/index.html
+var __ = require('@carbon-io/fibers').__(module)
 
 var CarbonClient = require('carbon-client-node')
 
