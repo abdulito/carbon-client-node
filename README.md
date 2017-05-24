@@ -631,7 +631,7 @@ e2 = client.getEndpoint("foo").getEndpoint("bar")
 
 ```
 
-Endpoint full uri and absoulte path can be accessed as follows
+Endpoint full uri and absolute path can be accessed as follows
 
 ```node
 console.log(e1.getAbsolutePath()) // '/foo/bar'
