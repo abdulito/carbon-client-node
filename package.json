@@ -15,10 +15,8 @@
     "directories": {
         "lib": "./lib", 
         "bin": "./bin"
-    }, 
-    "engines": {
-        "node": ">=0.12.0"
-    }, 
+    },
+    "engines": { "node": ">=4.0.0" },
     "devDependencies": {
         "@carbon-io/atom": "0.7.x", 
         "@carbon-io/bond": "0.6.x", 
