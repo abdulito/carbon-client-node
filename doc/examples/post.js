@@ -6,10 +6,13 @@ var CarbonClient = require('@carbon-io/carbon-client-node')
 var client = new CarbonClient("http://localhost:8888")
 
 // create an endpoint object for /hello
-endpoint = client.getEndpoint("hello")
+var endpoint = client.getEndpoint("hello")
 
-// call get() which will call GET on http://localhost:8888/hello
-endpoint.get(function(e, response) {
+var body = {
+  msg: "Welcome to carbon-io!"
+}
+
+endpoint.post(body, function(e, response) {
   console.log("Response from /hello: ")
   console.log(response.body)
 })

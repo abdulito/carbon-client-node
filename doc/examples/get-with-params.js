@@ -1,7 +1,3 @@
-/**
- * Created by abdul on 5/24/17.
- */
-
 // require the client
 var CarbonClient = require('@carbon-io/carbon-client-node')
 

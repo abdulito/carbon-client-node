@@ -1,7 +1,3 @@
-/**
- * Created by abdul on 5/24/17.
- */
-
 // This example uses the carbon-io fibers module to create a fiber.
 // For more info, see https://docs.carbon.io/en/latest/packages/carbon-core/docs/packages/fibers/docs/guide/index.html
 
