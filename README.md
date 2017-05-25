@@ -37,7 +37,7 @@ Your package.json should include ```carbon-client-node```
     ...
 
     "dependencies": {
-        "carbon-client-node": "git+ssh://git@github.com:carbon-io/carbon-client-node.git"
+        "@carbon-io/carbon-client-node": "git+ssh://git@github.com/carbon-io/carbon-client-node.git"
     }
 
     ...
@@ -59,14 +59,17 @@ This is a simple example for an http get operation
 
 ```node
 // require the client
-var CarbonClient = require('carbon-client-node');
+var CarbonClient = require('@carbon-io/carbon-client-node')
+
+// Service for this example: https://github.com/carbon-io/examples/blob/master/hello-world/HelloService.js
 
 // create the client object
 var client = new CarbonClient("http://localhost:8888")
 
 // GET http://localhost:8888/hello
 client.getEndpoint("hello").get(function(e, response) {
-  console.log("Response from /hello: " + response.body)
+  console.log("Response from /hello: ")
+  console.log(response.body)
 })
 
 ```
@@ -84,7 +87,9 @@ by simply not passing a callback function (which is always the last argument). T
 var __ = require('@carbon-io/fibers').__(module)
 
 // require the client
-var CarbonClient = require('carbon-client-node')
+var CarbonClient = require('@carbon-io/carbon-client-node')
+
+// Service for this example: https://github.com/carbon-io/examples/blob/master/hello-world/HelloService.js
 
 __(
   function() {
@@ -92,9 +97,10 @@ __(
 
     // Synchronized call, not how
     var response = client.getEndpoint("hello").get()
-    console.log("Response from /hello: " + response.body)
+    console.log("Response from /hello: ")
+    console.log(response.body)
 
-})
+  })
 ```
 
 
@@ -124,17 +130,19 @@ For synchronized calls:
 
 ```node
 // require the client
-var CarbonClient = require('carbon-client-node');
+var CarbonClient = require('@carbon-io/carbon-client-node')
 
-// create the client object
 var client = new CarbonClient("http://localhost:8888")
+
+// Service for this example: https://github.com/carbon-io/examples/blob/master/hello-world/HelloService.js
 
 // create an endpoint object for /hello
 endpoint = client.getEndpoint("hello")
 
 // call get() which will call GET on http://localhost:8888/hello
 endpoint.get(function(e, response) {
-  console.log("Response from /hello: " + response.body)
+  console.log("Response from /hello: ")
+  console.log(response.body)
 })
 
 ```
@@ -155,25 +163,36 @@ response.body: response body
 Query string params are passed as an object through the ```options.params``` argument of each http method
 ```node
 
+// require the client
+var CarbonClient = require('@carbon-io/carbon-client-node')
 
-// request the /hello endpoint
-var endpoint = client.getEndpoint("hello");
+// Service for this example: https://github.com/carbon-io/examples/blob/master/parameters/Service.js
+
+var client = new CarbonClient("http://localhost:8888")
+
+// create an endpoint object for /hello
+var endpoint = client.getEndpoint("hello")
+
 var options = {
   params: {
-    x: 1,
-    y: 2
+    message: "Welcome to carbon-io!"
 
   }
 }
 
-// GET http://localhost:8888/hello?x=1&y=2
+// GET http://localhost:8888/hello?message="Welcome to carbon-io!"
 endpoint.get(options, function(e, response) {
-  console.log("Response from /hello: " + response.body)
+  console.log("Response from /hello: ")
+  console.log(response.body)
 })
-
 ```
 
+Output:
 
+```
+Response from /hello:
+{ msg: 'Hello world! Welcome to carbon-io!' }
+```
 #### POST
 
 Supported calling forms for ```Endpoint.post()``` are as follows:
