@@ -61,7 +61,7 @@ This is a simple example for an http get operation
 // require the client
 var CarbonClient = require('@carbon-io/carbon-client-node')
 
-// Service for this example: https://github.com/carbon-io/examples/blob/master/hello-world/HelloService.js
+// Service for this example: https://github.com/carbon-io/example__hello-world-service/blob/master/lib/HelloService.js
 
 // create the client object
 var client = new CarbonClient("http://localhost:8888")
@@ -89,7 +89,7 @@ var __ = require('@carbon-io/fibers').__(module)
 // require the client
 var CarbonClient = require('@carbon-io/carbon-client-node')
 
-// Service for this example: https://github.com/carbon-io/examples/blob/master/hello-world/HelloService.js
+// Service for this example: https://github.com/carbon-io/example__hello-world-service/blob/master/lib/HelloService.js
 
 __(
   function() {
@@ -134,7 +134,7 @@ var CarbonClient = require('@carbon-io/carbon-client-node')
 
 var client = new CarbonClient("http://localhost:8888")
 
-// Service for this example: https://github.com/carbon-io/examples/blob/master/hello-world/HelloService.js
+// Service for this example: https://github.com/carbon-io/example__hello-world-service/blob/master/lib/HelloService.js
 
 // create an endpoint object for /hello
 endpoint = client.getEndpoint("hello")
@@ -166,7 +166,7 @@ Query string params are passed as an object through the ```options.params``` arg
 // require the client
 var CarbonClient = require('@carbon-io/carbon-client-node')
 
-// Service for this example: https://github.com/carbon-io/examples/blob/master/parameters/Service.js
+// Service for this example: https://github.com/carbon-io/example__hello-world-service-parameter-parsing/blob/master/lib/HelloService.js
 
 var client = new CarbonClient("http://localhost:8888")
 

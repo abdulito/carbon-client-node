@@ -6,7 +6,7 @@ var __ = require('@carbon-io/fibers').__(module)
 // require the client
 var CarbonClient = require('@carbon-io/carbon-client-node')
 
-// Service for this example: https://github.com/carbon-io/examples/blob/master/hello-world/HelloService.js
+// Service for this example: https://github.com/carbon-io/example__hello-world-service/blob/master/lib/HelloService.js
 
 __(
   function() {
