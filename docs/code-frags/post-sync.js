@@ -10,9 +10,9 @@ __(
       msg: "Welcome to carbon-io!"
     }
 
-    var response = client.getEndpoint("hello").post(body)
+    var res = client.getEndpoint("hello").post(body)
     console.log("Response from /hello: ")
-    console.log(response.body)
+    console.log(res.body)
 
 
   }

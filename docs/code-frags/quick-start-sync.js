@@ -9,9 +9,9 @@ var client = new CarbonClient("http://localhost:8888")
 __(
   function() {
       // call get sync!
-      var response = client.getEndpoint("hello").get()
+      var res = client.getEndpoint("hello").get()
       console.log("Response from /hello: ")
-      console.log(response.body)
+      console.log(res.body)
 
   }
 )

@@ -6,9 +6,9 @@ var client = new CarbonClient("http://localhost:8888")
 __(
   function() {
     //  call http HEAD method
-    var response = client.getEndpoint("test-head").head(null)
+    var res = client.getEndpoint("test-head").head(null)
     console.log("Response from /test-head:")
-    console.log(response.body)
+    console.log(res.body)
   }
 )
 

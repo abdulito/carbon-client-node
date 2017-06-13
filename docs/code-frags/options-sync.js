@@ -6,10 +6,10 @@ var client = new CarbonClient("http://localhost:8888")
 __(
   function() {
 
-    var response = client.getEndpoint("test-options").options()
+    var res = client.getEndpoint("test-options").options()
 
     console.log("Response from /test-options:")
-    console.log(response.body)
+    console.log(res.body)
   }
 )
 

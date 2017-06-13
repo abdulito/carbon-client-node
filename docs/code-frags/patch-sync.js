@@ -10,13 +10,13 @@ __(
       msg: "Welcome to carbon-io!"
     }
 
-    var response = client.getEndpoint("users").patch({
+    var res = client.getEndpoint("users").patch({
       "_id": "1234",
       "name": "bob"
     })
 
     console.log("Response from /users:")
-    console.log(response.body)
+    console.log(res.body)
 
 
   }

@@ -7,13 +7,13 @@ __(
   function() {
 
     //  put to /users
-    var response = client.getEndpoint("users/1234").put({
+    var res = client.getEndpoint("users/1234").put({
         "_id": "1234",
         "name": "bob"
       })
 
     console.log("Response from /users:")
-    console.log(response.body)
+    console.log(res.body)
 
   }
 )
