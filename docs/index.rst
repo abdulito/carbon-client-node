@@ -4,17 +4,8 @@
 carbon-client-node
 ==================
 
---------
-Overview
---------
-
 ``carbon-client-node`` is the Node.js client for Carbon.io services. It's an extension of the :ref:`carbon-client-js <carbon-client-node>`
 Node.js abilities, mainly allowing synchronized style calls.
-
-
-.. contents:: Table of Contents
-
-
 
 ------------
 Installation
