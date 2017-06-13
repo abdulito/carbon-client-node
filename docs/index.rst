@@ -1,7 +1,8 @@
 .. _carbon-client-node:
 
+==================
 carbon-client-node
-================
+==================
 
 --------
 Overview
@@ -143,10 +144,4 @@ Then install the package dependencies like this:
 
 .. include:: packages/carbon-client/docs/doc-frags/options-arg.rst
 
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
 
