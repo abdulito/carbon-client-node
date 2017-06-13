@@ -7,7 +7,7 @@ __(
   function() {
 
     var options = {
-      params: {
+      parameters: {
         who: "carbon"
 
       }
