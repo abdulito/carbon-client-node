@@ -91,7 +91,7 @@ __(function() {
           assert(!_.isNull(data))
           assert.equal(data.length, 1)
           assert.equal(data[0].username, "bob")
-          // no need to test find.each() because there is not sync version of it
+          // no need to test find.forEach()
           // test iteration with next()
         }
       }),
