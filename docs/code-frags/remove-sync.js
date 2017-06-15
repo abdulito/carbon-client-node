@@ -3,17 +3,13 @@ var CarbonClient = require('@carbon-io/carbon-client-node')
 
 var client = new CarbonClient("http://localhost:8888")
 
-__(
-  function() {
-
+__(function() {
     var usersCollection = client.getCollection("users")
     var result = usersCollection.remove({
         "_id": "123456"
       }
     )
-
     console.log(result)
-
   }
 )
 
