@@ -11,15 +11,11 @@ __(
 
     console.log("Iterating over all users")
     // invoke each sync
-    cursor.eachSync(function(e, item) {
-      if (item == null) {
-        console.log("Finish!")
-      } else {
+    cursor.forEach(function(item) {
         console.log(item)
-      }
-
-
     })
+
+    console.log("Finish!")
 
   }
 )

@@ -87,9 +87,9 @@ Then install the package dependencies like this:
 
 .. include:: doc-frags/to-array-sync.rst
 
-.. include:: packages/carbon-client/docs/doc-frags/each-sync.rst
+.. include:: packages/carbon-client/docs/doc-frags/for-each.rst
 
-.. include:: doc-frags/each.rst
+.. include:: doc-frags/for-each-sync.rst
 
 .. include:: doc-frags/next.rst
 
