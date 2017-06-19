@@ -1,5 +1,5 @@
 --------------------------------
-Quick Start (synchronized style)
+Quick Start (synchronous style)
 --------------------------------
 
 In general, all CarbonClient methods that take a callback function can be invoked synchronously (within a fiber)
