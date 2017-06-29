@@ -26,7 +26,7 @@ Your ``package.json`` should include ``carbon-client-node``
     {
 
       "dependencies": {
-          "@carbon-io/carbon-client-node": "git+ssh://git@github.com/carbon-io/carbon-client-node.git"
+          "@carbon-io/carbon-client-node": ">= 0.3.x"
       }
 
     }
