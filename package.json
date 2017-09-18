@@ -22,7 +22,6 @@
     "devDependencies": {
         "@carbon-io/atom": "0.7.x", 
         "@carbon-io/bond": "0.6.x",
-        "@carbon-io/carbond": "git+ssh://git@github.com:carbon-io/carbond.git#collection-overhaul",
         "@carbon-io/test-tube": "0.6.x", 
         "lodash": "4.16.x"
     }, 
