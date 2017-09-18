@@ -28,7 +28,7 @@
     "dependencies": {
         "mongodb-extended-json": "1.1.2", 
         "@carbon-io/fibers": "0.7.x", 
-        "@carbon-io/carbon-client": "git+ssh://git@github.com:carbon-io/carbon-client-js.git#collection-overhaul"
+        "@carbon-io/carbon-client": "carbon-io/carbon-client-js.git#collection-overhaul"
     }, 
     "scripts": {
         "test": "node test"
