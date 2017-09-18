@@ -14,7 +14,7 @@ __(function() {
     /********************************************************************
      * _type
      */
-    _type: testtube.Test,
+    _type: _o('@carbon-io/carbon-client/test/TestBase'),
 
     /********************************************************************
      * name
@@ -22,18 +22,11 @@ __(function() {
     name: "ErrorTest",
 
     /********************************************************************
-     * setup
-     */
-    setup: function(ctx) {
-      ctx.local.testClient = require('./setup')
-    },
-
-    /********************************************************************
      * doTest
      */
     doTest: function (ctx) {
         assert.throws(function() {
-          ctx.local.testClient.getEndpoint("error").get()
+          ctx.global.testClient.getEndpoint("error").get()
         }, function(err) {
           assert.equal(err.message, "ERROR")
           assert.equal(err.code, 500)

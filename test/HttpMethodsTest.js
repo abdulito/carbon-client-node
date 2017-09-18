@@ -16,26 +16,12 @@ __(function() {
     /********************************************************************
      * _type
      */
-    _type: testtube.Test,
+    _type: _o('./TestBase'),
 
     /********************************************************************
      * name
      */
     name: "HttpMethodsTest",
-
-    /********************************************************************
-     * setup
-     */
-    setup: function(ctx) {
-      ctx.global.testClient = require('./setup')
-    },
-
-    /********************************************************************
-     * teardown
-     */
-    teardown: function(ctx) {
-      delete ctx.global.testClient
-    },
 
     /********************************************************************
      * tests
@@ -102,7 +88,6 @@ __(function() {
         doTest: function(ctx) {
           var res = ctx.global.testClient.getEndpoint("head-test").head()
           assert(!_.isNull(res))
-          assert.equal(res.body, "HEAD")
           assert.equal(res.statusCode, 200)
         }
       }),

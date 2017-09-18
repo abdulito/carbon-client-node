@@ -15,28 +15,12 @@ __(function() {
     /********************************************************************
      * _type
      */
-    _type: testtube.Test,
+    _type: _o('./TestBase'),
 
     /********************************************************************
      * name
      */
     name: "CollectionTest",
-
-    /********************************************************************
-     * setup
-     */
-    setup: function(ctx) {
-      ctx.global.testClient = require('./setup')
-      ctx.global.usersCollection = ctx.global.testClient.getCollection("users")
-    },
-
-    /********************************************************************
-     * teardown
-     */
-    teardown: function(ctx) {
-      delete ctx.global.testClient
-      delete ctx.global.usersCollection
-    },
 
     /********************************************************************
      *
@@ -47,7 +31,7 @@ __(function() {
         name: 'SyncFindToArrayTest',
         description: 'testing users collection sync find toArray',
         doTest: function(ctx) {
-          var data = ctx.global.usersCollection.find().toArray()
+          var data = ctx.global.testClient.getCollection("users").find().toArray()
           assert(!_.isNull(data))
           assert(data.length > 0)
           assert.equal(data[0].username, "abdul")
@@ -59,7 +43,7 @@ __(function() {
         name: 'FindLimitTest',
         description: 'test find limit',
         doTest: function(ctx) {
-          var data = ctx.global.usersCollection.find({}, {limit: 1}).toArray()
+          var data = ctx.global.testClient.getCollection("users").find({}, {limit: 1}).toArray()
           assert(!_.isNull(data))
           assert.equal(data.length, 1)
           assert.equal(data[0].username, "abdul")
@@ -70,7 +54,7 @@ __(function() {
         name: 'FindSkipTest',
         description: 'test find skip',
         doTest: function(ctx) {
-          var data = ctx.global.usersCollection.find({}, {limit: 1, skip: 1}).toArray()
+          var data = ctx.global.testClient.getCollection("users").find({}, {limit: 1, skip: 1}).toArray()
           assert(!_.isNull(data))
           assert.equal(data.length, 1)
           assert.equal(data[0].username, "bob")
@@ -81,7 +65,7 @@ __(function() {
         name: 'CursorTest',
         description: 'cursor test',
         doTest: function(ctx) {
-          var cursor = ctx.global.usersCollection.find()
+          var cursor = ctx.global.testClient.getCollection("users").find()
 
           var obj = cursor.next()
           assert(!_.isNull(obj))
@@ -100,19 +84,51 @@ __(function() {
         name: 'InsertTest',
         description: 'testing users collection sync insert',
         doTest: function(ctx) {
-          var result = ctx.global.usersCollection.insert({
+          var result = ctx.global.testClient.getCollection("users").insertObject({
             username: "joe"
           })
           assert(!_.isNull(result))
           assert(!_.isNull(result["_id"]))
         }
       }),
+
+      o({
+        _type: testtube.Test,
+        name: 'UpdateTest',
+        description: 'test update',
+        doTest: function(ctx) {
+          var result = ctx.global.testClient.getCollection("users").update({
+            username: "joe"
+          }, {
+            "$set": {
+              email: "joe@foo.com"
+            }
+          })
+          assert(!_.isNull(result))
+          assert(result.n == 1)
+        }
+      }),
+
+      o({
+        _type: testtube.Test,
+        name: 'UpdateObjectTest',
+        description: 'test update object',
+        doTest: function(ctx) {
+          var result = ctx.global.testClient.getCollection("users").updateObject("123", {
+            "$set": {
+              email: "joe@foo.com"
+            }
+          })
+          assert(_.isNil(result))
+        }
+      }),
+
       o({
         _type: testtube.Test,
         name: 'RemoveTest',
         description: 'test users collection sync remove',
         doTest: function(ctx) {
-          var result = ctx.global.usersCollection.remove({
+          var result = ctx.global.testClient.getCollection("users").remove({
             username: "joe"
           })
           assert(!_.isNil(result))
@@ -124,51 +140,23 @@ __(function() {
         name: 'RemoveObjectTest',
         description: 'test remove object',
         doTest: function(ctx) {
-          var result = ctx.global.usersCollection.removeObject("123")
+          var result = ctx.global.testClient.getCollection("users").removeObject("123")
           assert(_.isNull(result))
         }
       }),
-      o({
-        _type: testtube.Test,
-        name: 'UpdateTest',
-        description: 'test update',
-        doTest: function(ctx) {
-          throw new testtube.errors.SkipTestError(
-            'update should be patch and have a different result than insert')
-          var result = ctx.global.usersCollection.update({
-            username: "joe"
-          }, {
-            "$set": {
-              email: "joe@foo.com"
-            }
-          })
-          assert(!_.isNull(result))
-          assert(result.ok)
-        }
-      }),
+
       o({
         _type: testtube.Test,
         name: 'SaveObjectTest',
         description: 'test save object',
         doTest: function(ctx) {
           // XXX: this should include id in the request body
-          var result = ctx.global.usersCollection.saveObject("123", {username: "joe"})
+          var result = ctx.global.testClient.getCollection("users").saveObject("123", {
+            _id: "123",
+            username: "joe"})
           assert.equal(result.username, 'joe')
         }
-      }),
-      o({
-        _type: testtube.Test,
-        name: 'UpdateObjectTest',
-        description: 'test update object',
-        doTest: function(ctx) {
-          var result = ctx.global.usersCollection.updateObject("123", {
-            "$set": {
-              email: "joe@foo.com"
-            }
-          })
-          assert(_.isNil(result))
-        }
-      }),
+      })
     ]
   })
 })
