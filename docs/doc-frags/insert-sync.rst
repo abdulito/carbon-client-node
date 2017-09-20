@@ -4,7 +4,7 @@ insert (sync)
 
 Supported synchronized calling forms for ``Collection.insert()`` are as follows:
 
--  ``insert(obj, cb)``
+-  ``insert(objects, cb)``
 
 .. literalinclude:: code-frags/insert-sync.js
     :language: javascript

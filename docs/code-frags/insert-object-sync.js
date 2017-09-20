@@ -5,13 +5,13 @@ var client = new CarbonClient("http://localhost:8888")
 
 __(function() {
     var usersCollection = client.getCollection("users")
-    var result = usersCollection.insert([{
+    var result = usersCollection.insertObject({
         name: "joe",
         address: {
           city: "San Francisco",
           zipcode: 94401
         }
-      }])
+      })
     console.log(result)
   }
 )

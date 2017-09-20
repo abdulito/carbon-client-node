@@ -105,6 +105,14 @@ Then install the package dependencies like this:
 
 .. include:: doc-frags/find-object-sync.rst
 
+.. include:: packages/carbon-client/docs/doc-frags/insert.rst
+
+.. include:: doc-frags/insert-sync.rst
+
+.. include:: packages/carbon-client/docs/doc-frags/insert-object.rst
+
+.. include:: doc-frags/insert-object-sync.rst
+
 .. include:: packages/carbon-client/docs/doc-frags/update.rst
 
 .. include:: doc-frags/update-sync.rst
@@ -112,6 +120,10 @@ Then install the package dependencies like this:
 .. include:: packages/carbon-client/docs/doc-frags/update-object.rst
 
 .. include:: doc-frags/update-object-sync.rst
+
+.. include:: packages/carbon-client/docs/doc-frags/save.rst
+
+.. include:: doc-frags/save-sync.rst
 
 .. include:: packages/carbon-client/docs/doc-frags/save-object.rst
 
