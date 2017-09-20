@@ -79,10 +79,24 @@ __(function() {
           // test iteration with next()
         }
       }),
+
       o({
         _type: testtube.Test,
         name: 'InsertTest',
         description: 'testing users collection sync insert',
+        doTest: function(ctx) {
+          var result = ctx.global.testClient.getCollection("users").insert([{
+            username: "joe"
+          }])
+          assert(!_.isNull(result))
+          assert(!_.isNull(result["_id"]))
+        }
+      }),
+
+      o({
+        _type: testtube.Test,
+        name: 'InsertObjectTest',
+        description: 'testing users collection sync insertObject',
         doTest: function(ctx) {
           var result = ctx.global.testClient.getCollection("users").insertObject({
             username: "joe"
@@ -98,10 +112,10 @@ __(function() {
         description: 'test update',
         doTest: function(ctx) {
           var result = ctx.global.testClient.getCollection("users").update({
-            username: "joe"
+            username: "abdul"
           }, {
             "$set": {
-              email: "joe@foo.com"
+              lastLogin: new Date()
             }
           })
           assert(!_.isNull(result))
@@ -116,7 +130,7 @@ __(function() {
         doTest: function(ctx) {
           var result = ctx.global.testClient.getCollection("users").updateObject("123", {
             "$set": {
-              email: "joe@foo.com"
+              lastLogin: new Date()
             }
           })
           assert(_.isNil(result))
@@ -129,7 +143,7 @@ __(function() {
         description: 'test users collection sync remove',
         doTest: function(ctx) {
           var result = ctx.global.testClient.getCollection("users").remove({
-            username: "joe"
+            username: "bob"
           })
           assert(!_.isNil(result))
           assert.equal(result.n, 1)
@@ -155,6 +169,25 @@ __(function() {
             _id: "123",
             username: "joe"})
           assert.equal(result.username, 'joe')
+        }
+      }),
+
+      /*
+       * IMPORTANT
+       *  the save test was put last since save() replaces the whole collection.
+       */
+      o({
+        _type: testtube.Test,
+        name: 'SaveTest',
+        description: 'test save',
+        doTest: function(ctx) {
+          // XXX: this should include id in the request body
+          var result = ctx.global.testClient.getCollection("users").save([{
+            _id: "777",
+            username: "joe"}])
+          assert(_.isArray(result))
+          assert(result.length == 1)
+          assert.equal(result[0].username, 'joe')
         }
       })
     ]
