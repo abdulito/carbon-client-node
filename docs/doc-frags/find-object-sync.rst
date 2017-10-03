@@ -7,6 +7,7 @@ Supported synchronized calling forms for ``Collection.findObject()`` are as foll
 Supported calling forms:
 
 -  ``findObject(id)``
+-  ``findObject(id, options)``
 
 .. literalinclude:: code-frags/find-object-sync.js
     :language: javascript

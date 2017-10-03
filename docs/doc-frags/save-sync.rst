@@ -7,6 +7,7 @@ This is a dangerous operation. It replaces the entire collection with the specif
 Supported synchronized calling forms for ``Collection.save()`` are as follows:
 
 -  ``save(objects)``
+-  ``save(objects, options)``
 
 .. literalinclude:: code-frags/save-sync.js
     :language: javascript

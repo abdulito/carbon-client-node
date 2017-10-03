@@ -43,7 +43,7 @@ __(function() {
         name: 'FindLimitTest',
         description: 'test find limit',
         doTest: function(ctx) {
-          var data = ctx.global.testClient.getCollection("users").find({}, {limit: 1}).toArray()
+          var data = ctx.global.testClient.getCollection("users").find({}, {parameters: {limit: 1}}).toArray()
           assert(!_.isNull(data))
           assert.equal(data.length, 1)
           assert.equal(data[0].username, "abdul")
@@ -54,7 +54,7 @@ __(function() {
         name: 'FindSkipTest',
         description: 'test find skip',
         doTest: function(ctx) {
-          var data = ctx.global.testClient.getCollection("users").find({}, {limit: 1, skip: 1}).toArray()
+          var data = ctx.global.testClient.getCollection("users").find({}, {parameters: {limit: 1, skip: 1}}).toArray()
           assert(!_.isNull(data))
           assert.equal(data.length, 1)
           assert.equal(data[0].username, "bob")
