@@ -62,6 +62,21 @@ __(function() {
       }),
       o({
         _type: testtube.Test,
+        name: 'ProjectionTest',
+        description: 'test projection',
+        doTest: function(ctx) {
+          var data = ctx.global.testClient.getCollection("users").find({}, {
+            parameters: {
+              projection: {_id: 1, username: 1},
+              limit: 1}
+          }).toArray()
+          assert(!_.isNull(data))
+          assert.equal(data.length, 1)
+          assert(_.keys(data[0]).length == 2)
+        }
+      }),
+      o({
+        _type: testtube.Test,
         name: 'CursorTest',
         description: 'cursor test',
         doTest: function(ctx) {
