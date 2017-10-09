@@ -220,6 +220,19 @@ __(function() {
           assert(data != null)
           assert(data.length == 0)
         }
+      }),
+
+
+      o({
+        _type: testtube.Test,
+        name: 'SmallBatchSizeTest',
+        description: 'testing small custom limit',
+        doTest: function(ctx) {
+          var cursor = ctx.global.testClient.getCollection('items-large', {paginated: true}).find().limit(400)
+          var data = cursor.toArray()
+          assert(data != null)
+          assert.equal(data.length, 300)
+        }
       })
     ]
   })
