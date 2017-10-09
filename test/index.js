@@ -26,6 +26,7 @@ __(function() {
     tests: [
       _o('./HttpMethodsTest'),
       _o('./CollectionsTest'),
+      _o('./CursorsTest'),
       _o('./ErrorTest')
     ]
   })

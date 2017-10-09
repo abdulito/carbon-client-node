@@ -8,7 +8,7 @@ var _o = require('@carbon-io/bond')._o(module)
 var testtube = require('@carbon-io/test-tube')
 
 /******************************************************************************
- * 
+ *
  */
 __(function() {
   module.exports = o.main({
@@ -43,7 +43,7 @@ __(function() {
         name: 'FindLimitTest',
         description: 'test find limit',
         doTest: function(ctx) {
-          var data = ctx.global.testClient.getCollection("users").find({}, {parameters: {limit: 1}}).toArray()
+          var data = ctx.global.testClient.getCollection("users", {paginated: true}).find().limit(1).toArray()
           assert(!_.isNull(data))
           assert.equal(data.length, 1)
           assert.equal(data[0].username, "abdul")
@@ -54,7 +54,7 @@ __(function() {
         name: 'FindSkipTest',
         description: 'test find skip',
         doTest: function(ctx) {
-          var data = ctx.global.testClient.getCollection("users").find({}, {parameters: {limit: 1, skip: 1}}).toArray()
+          var data = ctx.global.testClient.getCollection("users", {paginated: true}).find().skip(1).limit(1).toArray()
           assert(!_.isNull(data))
           assert.equal(data.length, 1)
           assert.equal(data[0].username, "bob")
@@ -65,11 +65,10 @@ __(function() {
         name: 'ProjectionTest',
         description: 'test projection',
         doTest: function(ctx) {
-          var data = ctx.global.testClient.getCollection("users").find({}, {
+          var data = ctx.global.testClient.getCollection("users", {paginated: true}).find({
             parameters: {
-              projection: {_id: 1, username: 1},
-              limit: 1}
-          }).toArray()
+              projection: {_id: 1, username: 1}}
+          }).limit(1).toArray()
           assert(!_.isNull(data))
           assert.equal(data.length, 1)
           assert(_.keys(data[0]).length == 2)
@@ -127,10 +126,15 @@ __(function() {
         description: 'test update',
         doTest: function(ctx) {
           var result = ctx.global.testClient.getCollection("users").update({
-            username: "abdul"
-          }, {
             "$set": {
               lastLogin: new Date()
+            }
+          },
+            {
+              parameters: {
+              query: {
+                username: "abdul"
+              }
             }
           })
           assert(!_.isNull(result))
@@ -158,7 +162,11 @@ __(function() {
         description: 'test users collection sync remove',
         doTest: function(ctx) {
           var result = ctx.global.testClient.getCollection("users").remove({
-            username: "bob"
+            parameters: {
+              query: {
+                username: "bob"
+              }
+            }
           })
           assert(!_.isNil(result))
           assert.equal(result.n, 1)
