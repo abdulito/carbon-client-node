@@ -61,46 +61,6 @@ __(function() {
 
       o({
         _type: testtube.Test,
-        name: 'NoPaginationSkipParamTest',
-        description: 'testing skip param with non paginated collection',
-        doTest: function(ctx) {
-          var ex = null
-          try {
-            // test that skip is not allowed with non-paginated collections
-            var cursor = ctx.global.testClient.getCollection('items', {paginated: false}).find({
-              parameters: {
-                skip: 1
-              }
-            })
-          } catch(e) {
-            ex = e
-          }
-          assert(ex != null)
-        }
-      }),
-
-      o({
-        _type: testtube.Test,
-        name: 'NoPaginationLimitParamTest',
-        description: 'testing limit param with non paginated collection',
-        doTest: function(ctx) {
-          var ex = null
-          try {
-            // test that skip is not allowed with non-paginated collections
-            var cursor = ctx.global.testClient.getCollection('items', {paginated: false}).find({
-              parameters: {
-                limit: 1
-              }
-            })
-          } catch(e) {
-            ex = e
-          }
-          assert(ex != null)
-        }
-      }),
-
-      o({
-        _type: testtube.Test,
         name: 'NoPaginationLimitTest',
         description: 'testing limit with non paginated collection',
         doTest: function(ctx) {
@@ -125,7 +85,7 @@ __(function() {
           assert(obj != null)
           assert(cursor.items != null)
           // confirm server-side collection has a max of 50 items per page, although client has 100
-          assert(cursor.items.length == 50)
+          assert.equal(cursor.items.length, 50)
           // confirm that we still need more
           assert(cursor.needToGetMore())
         }
@@ -140,9 +100,9 @@ __(function() {
           var count = 0
           cursor.forEach(function(item) {
             count++
-            assert(item.itemNumber == count)
+            assert.equal(item.itemNumber, count)
           })
-          assert(count == 300)
+          assert.equal(count, 300)
         }
       }),
 
@@ -155,7 +115,7 @@ __(function() {
 
           var data  = cursor.toArray()
           assert(data != null)
-          assert(data.length == 300)
+          assert.equal(data.length, 300)
         }
       }),
 
@@ -167,7 +127,7 @@ __(function() {
           var cursor = ctx.global.testClient.getCollection('items', {paginated: true}).find().limit(40)
           var data = cursor.toArray()
           assert(data != null)
-          assert(data.length == 40)
+          assert.equal(data.length, 40)
 
         }
       }),
@@ -181,7 +141,7 @@ __(function() {
 
           var data = cursor.toArray()
           assert(data != null)
-          assert(data.length == 110)
+          assert.equal(data.length, 110)
         }
       }),
 
@@ -193,7 +153,7 @@ __(function() {
           var cursor = ctx.global.testClient.getCollection('items', {paginated: true}).find().limit(400)
           var data = cursor.toArray()
           assert(data != null)
-          assert(data.length == 300)
+          assert.equal(data.length, 300)
         }
       }),
 
@@ -206,7 +166,7 @@ __(function() {
 
           var data = cursor.toArray()
           assert(data != null)
-          assert(data.length == 200)
+          assert.equal(data.length, 200)
         }
       }),
 
@@ -218,7 +178,7 @@ __(function() {
           var cursor = ctx.global.testClient.getCollection('items', {paginated: true}).find().skip(400)
           var data = cursor.toArray()
           assert(data != null)
-          assert(data.length == 0)
+          assert.equal(data.length, 0)
         }
       }),
 
@@ -232,6 +192,108 @@ __(function() {
           var data = cursor.toArray()
           assert(data != null)
           assert.equal(data.length, 300)
+        }
+      }),
+
+      o({
+        _type: testtube.Test,
+        name: 'LimitInCursorOptionsTest',
+        description: 'testing limit in cursor options',
+        doTest: function(ctx) {
+          var cursor = ctx.global.testClient.getCollection('items', {paginated: true}).find({limit: 40})
+
+          var data = cursor.toArray()
+          assert(data != null)
+          assert.equal(data.length, 40)
+        }
+      }),
+
+      o({
+        _type: testtube.Test,
+        name: 'LimitInCollectionOptionsTest',
+        description: 'testing limit in collection options',
+        doTest: function(ctx) {
+          var cursor = ctx.global.testClient.getCollection('items', {paginated: true, limit: 40}).find()
+
+          var data = cursor.toArray()
+          assert(data != null)
+          assert.equal(data.length, 40)
+
+        }
+      }),
+
+      o({
+        _type: testtube.Test,
+        name: 'SkipInCursorOptionsTest',
+        description: 'testing skip in cursor options',
+        doTest: function(ctx) {
+          var cursor = ctx.global.testClient.getCollection('items', {paginated: true}).find({skip: 60})
+
+          var data = cursor.toArray()
+          assert(data != null)
+          assert.equal(data.length, 240)
+        }
+      }),
+
+      o({
+        _type: testtube.Test,
+        name: 'SkipInCollectionOptionsTest',
+        description: 'testing skip in collection options',
+        doTest: function(ctx) {
+          var cursor = ctx.global.testClient.getCollection('items', {paginated: true, skip: 60}).find()
+          var data = cursor.toArray()
+          assert.equal(data.length, 240)
+        }
+      }),
+
+      o({
+        _type: testtube.Test,
+        name: 'CursorOptionsShadowTest',
+        description: 'testing options shadowing',
+        doTest: function(ctx) {
+          var cursor = ctx.global.testClient.getCollection('items', {paginated: true, skip: 60, limit: 10}).find(
+            {skip: 1, limit: 1})
+
+          var data = cursor.toArray()
+          assert(data != null)
+          assert.equal(data.length, 1)
+          assert.equal(cursor.options.skip, 1)
+          assert.equal(cursor.options.limit, 1)
+          assert.equal(data[0].itemNumber, 2)
+        }
+      }),
+
+      o({
+        _type: testtube.Test,
+        name: 'DefaultBatchSizeTest',
+        description: 'testing default batch size',
+        doTest: function(ctx) {
+          var cursor = ctx.global.testClient.getCollection('items', {paginated: true}).find()
+
+          var data = cursor.toArray()
+
+          assert(data != null)
+          assert.equal(data.length, 300)
+          // default batch size is 100 but since max page size on the server is 50 it will change to 5
+          // after the first trip
+          // fetch trips = 300/50 + additional fetch that will return an empty set
+          assert.equal(cursor.totalFetchTrips, 7)
+
+        }
+      }),
+
+      o({
+        _type: testtube.Test,
+        name: 'CustomBatchSizeTest',
+        description: 'testing custom batch size',
+        doTest: function(ctx) {
+          var cursor = ctx.global.testClient.getCollection('items', {paginated: true, batchSize: 10}).find()
+
+          var data = cursor.toArray()
+          assert(data != null)
+          assert.equal(data.length, 300)
+          // fetch trips = 300/10 + additional fetch that will return an empty set
+          assert.equal(cursor.totalFetchTrips, 31)
         }
       })
     ]
