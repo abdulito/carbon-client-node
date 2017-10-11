@@ -1,5 +1,5 @@
 *********************
-Cursor.toArray (sync)
+toArray (sync)
 *********************
 
 Supported synchronized calling forms for ``Cursor.toArray()`` are as follows:

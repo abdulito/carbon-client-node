@@ -79,9 +79,47 @@ Then install the package dependencies like this:
 
 .. include:: doc-frags/delete-sync.rst
 
-.. include:: packages/carbon-client/docs/doc-frags/collections-and-cursors-header.rst
+.. include:: packages/carbon-client/docs/doc-frags/collections-header.rst
+
+.. include:: packages/carbon-client/docs/doc-frags/insert.rst
+
+.. include:: doc-frags/insert-sync.rst
 
 .. include:: packages/carbon-client/docs/doc-frags/find.rst
+
+.. include:: packages/carbon-client/docs/doc-frags/save.rst
+
+.. include:: doc-frags/save-sync.rst
+
+.. include:: packages/carbon-client/docs/doc-frags/update.rst
+
+.. include:: doc-frags/update-sync.rst
+
+.. include:: packages/carbon-client/docs/doc-frags/remove.rst
+
+.. include:: doc-frags/remove-sync.rst
+
+.. include:: packages/carbon-client/docs/doc-frags/insert-object.rst
+
+.. include:: doc-frags/insert-object-sync.rst
+
+.. include:: packages/carbon-client/docs/doc-frags/find-object.rst
+
+.. include:: doc-frags/find-object-sync.rst
+
+.. include:: packages/carbon-client/docs/doc-frags/save-object.rst
+
+.. include:: doc-frags/save-object-sync.rst
+
+.. include:: packages/carbon-client/docs/doc-frags/update-object.rst
+
+.. include:: doc-frags/update-object-sync.rst
+
+.. include:: packages/carbon-client/docs/doc-frags/remove-object.rst
+
+.. include:: doc-frags/remove-object-sync.rst
+
+.. include:: doc-frags/cursors-header.rst
 
 .. include:: packages/carbon-client/docs/doc-frags/to-array.rst
 
@@ -97,45 +135,7 @@ Then install the package dependencies like this:
 
 .. include:: doc-frags/skip-limit.rst
 
-.. include:: packages/carbon-client/docs/doc-frags/sort.rst
-
-.. include:: packages/carbon-client/docs/doc-frags/projection.rst
-
-.. include:: packages/carbon-client/docs/doc-frags/find-object.rst
-
-.. include:: doc-frags/find-object-sync.rst
-
-.. include:: packages/carbon-client/docs/doc-frags/insert.rst
-
-.. include:: doc-frags/insert-sync.rst
-
-.. include:: packages/carbon-client/docs/doc-frags/insert-object.rst
-
-.. include:: doc-frags/insert-object-sync.rst
-
-.. include:: packages/carbon-client/docs/doc-frags/update.rst
-
-.. include:: doc-frags/update-sync.rst
-
-.. include:: packages/carbon-client/docs/doc-frags/update-object.rst
-
-.. include:: doc-frags/update-object-sync.rst
-
-.. include:: packages/carbon-client/docs/doc-frags/save.rst
-
-.. include:: doc-frags/save-sync.rst
-
-.. include:: packages/carbon-client/docs/doc-frags/save-object.rst
-
-.. include:: doc-frags/save-object-sync.rst
-
-.. include:: packages/carbon-client/docs/doc-frags/remove.rst
-
-.. include:: doc-frags/remove-sync.rst
-
-.. include:: packages/carbon-client/docs/doc-frags/remove-object.rst
-
-.. include:: doc-frags/remove-object-sync.rst
+.. include:: packages/carbon-client/docs/doc-frags/batch-size.rst
 
 .. include:: packages/carbon-client/docs/doc-frags/error-handling.rst
 
