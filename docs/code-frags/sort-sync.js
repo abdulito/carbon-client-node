@@ -7,7 +7,7 @@ __(function() {
     var usersCollection = client.getCollection("users")
     // find all users sort by name descending
     var data = usersCollection.find({}, {sort:{"name": -1}}).toArray()
-    for(var i=0; i < data.length; i++) {
+    for (var i = 0; i < data.length; i++) {
       console.log(data[i])
     }
   }

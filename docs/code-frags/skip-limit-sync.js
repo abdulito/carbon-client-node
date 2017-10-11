@@ -6,7 +6,7 @@ var client = new CarbonClient("http://localhost:8888")
 __(function() {
     var usersCollection = client.getCollection("users")
     var data = usersCollection.find({}, {parameters: {skip:1, limit:1}}).toArray()
-    for( var i=0; i < data.length; i++) {
+    for (var i = 0; i < data.length; i++) {
       console.log(data[i])
     }
   }

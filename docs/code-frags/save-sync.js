@@ -6,8 +6,7 @@ var client = new CarbonClient("http://localhost:8888")
 __(function() {
     // CAUTION! save operation will replace the whole user collection with the following list
     var usersCollection = client.getCollection("users")
-    var result = usersCollection.save(
-      [{
+    var result = usersCollection.save([{
         name: "joe",
         address: {
           city: "San Francisco",
