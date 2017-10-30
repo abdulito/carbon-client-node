@@ -1,6 +1,6 @@
-*****
+************
 patch (sync)
-*****
+************
 
 Supported synchronized calling forms for ``Endpoint.patch()`` are as follows:
 

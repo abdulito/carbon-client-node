@@ -1,5 +1,3 @@
-.. _carbon-client-node:
-
 ==================
 carbon-client-node
 ==================
@@ -119,7 +117,7 @@ Then install the package dependencies like this:
 
 .. include:: doc-frags/remove-object-sync.rst
 
-.. include:: doc-frags/cursors-header.rst
+.. include:: packages/carbon-client/docs/doc-frags/cursors-header.rst
 
 .. include:: packages/carbon-client/docs/doc-frags/to-array.rst
 
@@ -129,11 +127,11 @@ Then install the package dependencies like this:
 
 .. include:: doc-frags/for-each-sync.rst
 
-.. include:: doc-frags/next.rst
+.. include:: packages/carbon-client/docs/doc-frags/next.rst
 
-.. include:: packages/carbon-client/docs/doc-frags/next-sync.rst
+.. include:: doc-frags/next-sync.rst
 
-.. include:: doc-frags/skip-limit.rst
+.. include:: packages/carbon-client/docs/doc-frags/skip-limit.rst
 
 .. include:: packages/carbon-client/docs/doc-frags/batch-size.rst
 
