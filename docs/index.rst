@@ -5,9 +5,7 @@ carbon-client-node
 ``carbon-client-node`` is the Node.js client for Carbon.io services. It's an extension of the :ref:`carbon-client-js <carbon-client-js>`
 with more Node.js abilities, mainly allowing synchronized style calls.
 
-------------
-Installation
-------------
+.. _carbon-client-node-installation:
 
 .. code::
 
@@ -79,6 +77,8 @@ Then install the package dependencies like this:
 
 .. include:: packages/carbon-client/docs/doc-frags/collections-header.rst
 
+.. include:: packages/carbon-client/docs/doc-frags/getcollection.rst
+
 .. include:: packages/carbon-client/docs/doc-frags/insert.rst
 
 .. include:: doc-frags/insert-sync.rst
@@ -144,5 +144,4 @@ Then install the package dependencies like this:
 .. include:: packages/carbon-client/docs/doc-frags/passing-headers.rst
 
 .. include:: packages/carbon-client/docs/doc-frags/options-arg.rst
-
 
